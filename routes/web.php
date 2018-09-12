@@ -33,7 +33,7 @@ Route::get('/usertypes/delete/{id}', 'UsertypeController@destroy');
 
 // User Routes
 Route::get('/users', 'UserController@index');
-Route::get('/users/delete/{id}', 'UserController@destroy');
+Route::get('/users/delete/{id}', 'UserControlsler@destroy');
 
 // Product Routes
 Route::get('/products', 'ProductController@index');
@@ -45,3 +45,6 @@ Route::get('/products/delete/{id}', 'ProductController@destroy');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+// layouts
+Route::get('/layout', 'HomeController@layout');

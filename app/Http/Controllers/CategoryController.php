@@ -34,9 +34,12 @@ class CategoryController extends Controller
             'category_name'=>'required',
         ]);
 
-        Category::create(request(['category_type','category_name']));
+        Category::create(request([
+            'category_type','category_name'
+            
+            ]));
 
-        $request->session()->flash('success_message', 'You have created a new Category...');
+        // $request->session()->flash('success_message', 'You have created a new Category...');
         
         return redirect('/categories');
     }

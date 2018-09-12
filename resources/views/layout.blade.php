@@ -7,12 +7,21 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="/css/custom.css">
-    <script src="/js/custom.js"></script>
+    <!-- <link rel="stylesheet" type="text/css" href="/css/custom.css"> -->
+    <!-- <script src="/js/custom.js"></script> -->
     <title>Ecommerce</title>
   </head>
   <body>
-    @include('layouts.navigation')
+    @if (Auth::user()->usertype_id == "1")
+      @include('layouts.navigation_buyer')
+    @endif
+    @if (Auth::user()->usertype_id == "2")
+      @include('layouts.navigation_seller')
+    @endif
+    @if (Auth::user()->usertype_id == "3")
+      @include('layouts.navigation')
+    @endif
+    
     <div class="container">
       @if(count($errors))
         <div class="alert alert-danger">

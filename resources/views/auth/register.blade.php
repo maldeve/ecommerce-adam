@@ -16,7 +16,7 @@
 
                             <div class="col-md-6">
                                 <select class="form-control" name="usertype_id">
-                                    <option selected>choose...</option>
+                                    <option selected>Choose...</option>
                                     @foreach($usertypes as $usertype)
                                         @if($usertype->user_type == "1")
                                             <option value="{{$usertype->user_type}}">{{"Buyer"}}</option>

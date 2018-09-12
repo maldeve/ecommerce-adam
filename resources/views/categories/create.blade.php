@@ -7,6 +7,7 @@
             {{csrf_field()}}
 
             <div class="form-group">
+                <label for="type">Category Type</label>
                 <select class="form-control" name="category_type">
                     <option value="0" selected>Super Parent...</option>
                     @foreach($categories as $category)

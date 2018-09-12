@@ -3,8 +3,15 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Product;
 
 class Category extends Model
 {
     protected $guarded = [];
+
+    // relate with posts
+    public function products() {
+        return $this->hasMany(Product::class);
+    }
+
 }

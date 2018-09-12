@@ -5,18 +5,23 @@
     <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="/categories" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Categories
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Products
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="/categories">All Categories</a>
-                    <a class="dropdown-item" href="/categories/create">Add Category</a>
+                    <a class="dropdown-item" href="/products">All Products</a>
+                    <a class="dropdown-item" href="#">Features</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#">Product Features</a>
                 </div>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/users">Users</a>
+                <a class="nav-link" href="#">Orders</a>
             </li>
-            
+            <li class="nav-item">
+                <a class="nav-link" href="#">Reviews</a>
+            </li>
+
             <li class="nav-item dropdown">
                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                     {{ Auth::user()->name }} <span class="caret"></span>
