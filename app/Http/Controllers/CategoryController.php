@@ -7,6 +7,12 @@ use App\Category;
 
 class CategoryController extends Controller
 {
+    /** pass it through authentication */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     /** index page*/
     public function index()
     {
@@ -24,7 +30,6 @@ class CategoryController extends Controller
     /** create category */
     public function store(Request $request)
     {
-        //validate form
         $this->validate(request(), [
             'category_name'=>'required',
         ]);
@@ -36,7 +41,7 @@ class CategoryController extends Controller
         return redirect('/categories');
     }
 
-    /** update form */
+    /** edit form */
     public function edit($id)
     {
         $category = Category::find($id);

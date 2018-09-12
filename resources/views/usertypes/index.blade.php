@@ -13,19 +13,15 @@
         @foreach ($usertypes as $usertype)
             <tr>
                 <td>{{$usertype->id}}</td>
-                <td>
-                @foreach($usertypes as $parent)
-                    @if($parent->id == "1")
-                        {{"Buyer"}}
-                    @endif
-                    @if($parent->id == "2")
-                        {{"Seller"}}
-                    @endif
-                    @if($parent->id == "3")
-                        {{"Admin"}}
-                    @endif
-                @endforeach
-                </td>              
+                @if($usertype->user_type == "1")
+                <td>{{"Buyer"}}</td> 
+                @endif
+                @if($usertype->user_type == "2")
+                <td>{{"Seller"}}</td>
+                @endif
+                @if($usertype->user_type == "3")
+                <td>{{"Admin"}}</td>
+                @endif              
                 <td>{{$usertype->created_at->diffForHumans()}}</td>
                 <td><a href="/usertypes/edit/{{$usertype->id}}" class="btn btn-sm btn-primary">Edit</a></td>
                 <td><a href="/usertypes/delete/{{$usertype->id}}" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure you want to delete user type?')">Delete</a></td>

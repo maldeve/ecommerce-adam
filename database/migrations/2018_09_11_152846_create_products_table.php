@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateUsertypesTable extends Migration
+class CreateProductsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,20 +13,15 @@ class CreateUsertypesTable extends Migration
      */
     public function up()
     {
-        Schema::create('usertypes', function (Blueprint $table) {
+        Schema::create('products', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('user_type');
+            $table->integer('category_id');
+            $table->string('product_name');
+            $table->double('product_price');
+            $table->string('image');
+            $table->text('description');
             $table->timestamps();
         });
-
-        DB::table ('usertypes')->insert(
-            array(
-                ['user_type' =>'1'],
-                ['user_type' =>'2'],
-                ['user_type' =>'3']
-            )
-        );
-
     }
 
     /**
@@ -36,6 +31,6 @@ class CreateUsertypesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('usertypes');
+        Schema::dropIfExists('products');
     }
 }

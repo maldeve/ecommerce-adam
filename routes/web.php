@@ -30,3 +30,18 @@ Route::post('/usertypes', 'UsertypeController@store');
 Route::get('/usertypes/edit/{id}', 'UsertypeController@edit');
 Route::patch('/usertypes/{id}', 'UsertypeController@update');
 Route::get('/usertypes/delete/{id}', 'UsertypeController@destroy');
+
+// User Routes
+Route::get('/users', 'UserController@index');
+Route::get('/users/delete/{id}', 'UserController@destroy');
+
+// Product Routes
+Route::get('/products', 'ProductController@index');
+Route::get('/products/create', 'ProductController@create');
+Route::post('/products', 'ProductController@store');
+Route::get('/products/edit/{id}', 'ProductController@edit');
+Route::patch('/products/{id}', 'ProductController@update');
+Route::get('/products/delete/{id}', 'ProductController@destroy');
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

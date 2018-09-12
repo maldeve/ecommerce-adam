@@ -6,7 +6,7 @@
         <tr>
             <th>#</th>
             <th>Type</th>
-            <th>Created</th>
+            <th>Created At</th>
             <th>Name</th>
             <th colspan="2">Actions</th>
         </tr>
@@ -15,11 +15,16 @@
             <tr>
                 <td>{{$category->id}}</td>
                 <td>
-                @foreach($categories as $parent)
-                    @if($parent->id == $category->category_type)
-                        {{$parent->category_name}}
-                    @endif
-                @endforeach
+                @if($category->category_type > "0")
+                    @foreach($categories as $parent)
+                        @if($parent->id == $category->category_type)
+                            {{$parent->category_name}}
+                        @endif
+                    @endforeach
+                @endif
+                @if($category->category_type == "0")
+                    <i><strong>{{"Super Parent"}}</strong></i>
+                @endif
                 </td>              
                 <td>{{$category->created_at->diffForHumans()}}</td>
                 <td>{{$category->category_name}}</td>
