@@ -9,21 +9,21 @@ use App\Product;
 
 class ProductController extends Controller
 {
-    /** products table */
+    // products table 
     public function index()
     {
         $products = Product::all();
         return view('products.index', compact('products'));
     }
 
-    /** create form */
+    // create form 
     public function create()
     {
         $categories = Category::all();
         return view('products.create', compact('categories'));
     }
 
-    /** add product */
+    // add product 
     public function store(Request $request)
     {
         $this->validate(request(), [
@@ -33,7 +33,6 @@ class ProductController extends Controller
             'product_description'=>'required',
             'product_status'=>'required',
         ]);
-
         Product::create(request([
             // 'user_id',
             'category_id',
@@ -42,20 +41,18 @@ class ProductController extends Controller
             'product_description',
             'product_status'   
         ]));
-
         // $request->session()->flash('success_message', 'You have created a new Product');
-        
         return redirect('/products');
     }
 
-    /** update form */
+    // update form 
     public function edit($id)
     {
         $product = Product::find($id);
         return view('products.edit', compact('product'));
     }
 
-    /** update product */
+    // update product 
     public function update(Request $request, $id)
     {
         //validate form
@@ -65,17 +62,15 @@ class ProductController extends Controller
             'product_description'=>'required',
             'product_status'=>'required',
         ]);
-
         Product::where('id', $id)->update(request(['product_name', 'product_price', 'product_description', 'product_status']));
-        
         return redirect('/products');
     }
 
-    /** delete product */
+    // delete product 
     public function destroy($id)
     {
         Product::where('id', $id)->delete($id);
-        
         return redirect('/products');
     }
+
 }

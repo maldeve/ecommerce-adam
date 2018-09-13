@@ -3,20 +3,21 @@
 @section('content')
     <div class="row">
         <div class="col-md-10">
-            <table class="table table-striped table-hover">
-                <tr>
-                    <th>#</th>
-                    <th>User Type</th>
-                    <th>Name</th>
-                    <th>Email</th>
-                    <th>Created At</th>
-                    <th colspan="1">Actions</th>
-                </tr>
-
+            <table class="table table-hover table-bordered">
+                <thead class="thead-light">
+                    <tr>
+                        <th>#</th>
+                        <th>User Type</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Created At</th>
+                        <th colspan="1">Actions</th>
+                    </tr>
+                </thead>
+                
                 @foreach ($users as $user)
                     <tr>
                         <td>{{$user->id}}</td>
-                        <!-- <td>{{$user->usertype_id}}</td> -->
                         @if($user->usertype_id == "1")
                         <td>{{"Buyer"}}</td> 
                         @endif

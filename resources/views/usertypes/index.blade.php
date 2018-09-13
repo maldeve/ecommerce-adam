@@ -2,13 +2,15 @@
 
 @section('content')
     <a href="/usertypes/create" class="btn btn-sm btn-primary">Add User Type</a>
-    <table class="table table-condensed table-striped table-bordered table-hover">
-        <tr>
-            <th>#</th>
-            <th>User Type</th>
-            <th>Created At</th>
-            <th colspan="2">Actions</th>
-        </tr>
+    <table class="table table-bordered table-hover">
+        <thead class="thead-light">
+            <tr>
+                <th>#</th>
+                <th>User Type</th>
+                <th>Created At</th>
+                <th colspan="2">Actions</th>
+            </tr>
+        </thead>
 
         @foreach ($usertypes as $usertype)
             <tr>

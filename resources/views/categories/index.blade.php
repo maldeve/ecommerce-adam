@@ -2,15 +2,17 @@
 
 @section('content')
     <!-- <a href="/categories/create" class="btn btn-sm btn-primary">Add Category</a> -->
-    <table class="table table-condensed table-striped table-bordered table-hover">
-        <tr>
-            <th>#</th>
-            <th>Type</th>
-            <th>Created At</th>
-            <th>Name</th>
-            <th colspan="2">Actions</th>
-        </tr>
-
+    <table class="table table-bordered table-hover">
+        <thead class="thead-light">
+            <tr>
+                <th>#</th>
+                <th>Type</th>
+                <th>Created At</th>
+                <th>Name</th>
+                <th colspan="2">Actions</th>
+            </tr>
+        </thead>
+        
         @foreach ($categories as $category)
             <tr>
                 <td>{{$category->id}}</td>

@@ -5,16 +5,18 @@
         <div class="col-md-10">
             <a href="/products/create" class="btn btn-sm btn-primary">Add Product</a>
             <table class="table table-bordered table-hover">
-                <tr>
-                    <th>#</th>
-                    <th>Category</th>
-                    <th>Name</th>
-                    <th>Price</th>
-                    <th>Description</th>
-                    <th>Status</th>
-                    <th>Created At</th>
-                    <th colspan="4">Actions</th>
-                </tr>
+                <thead class="thead-light">
+                    <tr>
+                        <th>#</th>
+                        <th>Category</th>
+                        <th>Name</th>
+                        <th>Price</th>
+                        <th>Description</th>
+                        <th>Status</th>
+                        <th>Created At</th>
+                        <th colspan="3">Actions</th>
+                    </tr>
+                </thead>
 
                 @foreach ($products as $product)
                     <tr>
@@ -31,7 +33,7 @@
                         @endif
                         <td>{{$product->created_at->toFormattedDateString()}}</td>
                         <td><a href="/products/edit/{{$product->id}}" class="btn btn-sm btn-primary">Edit</a></td>
-                        <td><a href="#" class="btn btn-sm btn-success">Add to Cart</a></td>
+                        <td><a href="/product_features/{{$product->id}}" class="btn btn-sm btn-success">Product Features</a></td>
                         <td><a href="/products/delete/{{$product->id}}" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure you want to delete Product?')">Delete</a></td>
                     </tr>
                 @endforeach

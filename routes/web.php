@@ -42,6 +42,20 @@ Route::post('/products', 'ProductController@store');
 Route::get('/products/edit/{id}', 'ProductController@edit');
 Route::patch('/products/{id}', 'ProductController@update');
 Route::get('/products/delete/{id}', 'ProductController@destroy');
+
+// Feature Routes
+Route::get('/features', 'FeatureController@index');
+Route::get('/features/create', 'FeatureController@create');
+Route::post('/features', 'FeatureController@store');
+Route::get('/features/edit/{id}', 'FeatureController@edit');
+Route::patch('/features/{id}', 'FeatureController@update');
+Route::get('/features/delete/{id}', 'FeatureController@destroy');
+
+// Product_Feature Routes
+Route::get('/product_features/{product}', 'Product_FeatureController@productFeatures');
+Route::post('/product_features', 'Product_FeatureController@store');
+Route::patch('/product_features/{id}', 'Product_FeatureController@update');
+Route::get('/product_features/{id}', 'Product_FeatureController@destroy');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');

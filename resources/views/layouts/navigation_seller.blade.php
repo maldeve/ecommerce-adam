@@ -10,7 +10,7 @@
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <a class="dropdown-item" href="/products">All Products</a>
-                    <a class="dropdown-item" href="#">Features</a>
+                    <a class="dropdown-item" href="/features">Features</a>
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item" href="#">Product Features</a>
                 </div>
