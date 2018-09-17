@@ -40,10 +40,11 @@ class ProductController extends Controller
             'product_name'=>'required',
             'product_price'=>'required',
             'product_description'=>'required',
+            'product_image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'product_status'=>'required',
         ]);
         Product::create(request([
-            // 'user_id',
+            'user_id',
             'category_id',
             'product_name',
             'product_price',
@@ -143,5 +144,21 @@ class ProductController extends Controller
             return $order;
         });
         return view('products.user_orders', ['orders' => $orders]);
+    }
+
+    // seller view orders
+    public function sellerViewOrders() {
+        $orders = Order::all();
+        $orders -> transform(function($order, $key){
+            $order->cart = unserialize($order->cart);
+            return $order;
+        });
+        return view('products.seller_view_orders', ['orders' => $orders]);
+    }
+
+    // change order status to complete
+    public function completeOrders(Request $request, $id) {
+        Order::where('id', $id)->update(request(['order_status_id']));
+        return back();
     }
 }

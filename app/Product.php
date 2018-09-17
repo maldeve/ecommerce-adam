@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use App\Category;
 use App\Product_Feature;
+use App\User;
 
 class Product extends Model
 {
@@ -18,6 +19,11 @@ class Product extends Model
     // relate with product_features
     public function product_features() {
         return $this->hasMany(Product_Feature::class);
+    }
+
+    // relate with users
+    public function user() {
+        return $this->belongsTo(User::class);
     }
     
 }

@@ -11,12 +11,10 @@
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <a class="dropdown-item" href="/products">All Products</a>
                     <a class="dropdown-item" href="/features">Features</a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">Product Features</a>
                 </div>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Orders</a>
+                <a class="nav-link" href="/products/seller_view_orders">Orders</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="#">Reviews</a>

@@ -47,6 +47,8 @@ Route::get('/products/shopping-cart', 'ProductController@shoppingCart');
 Route::get('/checkout', 'ProductController@checkOut');
 Route::post('/checkout', 'ProductController@postCheckOut');
 Route::get('/products/user_orders', 'ProductController@getUserOrders');
+Route::get('/products/seller_view_orders', 'ProductController@sellerViewOrders');
+Route::patch('/products/complete_orders/{id}', 'ProductController@completeOrders');
 
 // Feature Routes
 Route::get('/features', 'FeatureController@index');

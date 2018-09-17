@@ -8,6 +8,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use App\Usertype;
 use \App\Auth;
 use App\Order;
+use App\Product;
 
 class User extends Authenticatable
 {
@@ -39,5 +40,10 @@ class User extends Authenticatable
     // relate with orders
     public function orders() {
         return $this->hasMany(Order::class);
+    }
+
+    // relate with products
+    public function products() {
+        return $this->hasMany(Product::class);
     }
 }
