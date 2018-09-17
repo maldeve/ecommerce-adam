@@ -7,6 +7,12 @@ use App\Feature;
 
 class FeatureController extends Controller
 {
+    // authentication
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
     // features table
     public function index()
     {

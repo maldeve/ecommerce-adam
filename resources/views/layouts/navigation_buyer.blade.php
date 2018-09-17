@@ -9,25 +9,27 @@
                 Products
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="#">All Products</a>
-                    <a class="dropdown-item" href="#">Features</a>
+                    <a class="dropdown-item" href="/products">All Products</a>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">Product Features</a>
+                    <a class="dropdown-item" href="/products/user_orders">My Orders</a>
                 </div>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Orders</a>
+                <a class="nav-link" href="/products/user_orders">My Orders</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="#">Reviews</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Cart</a>
+                <a class="nav-link" href="/products/shopping-cart">
+                    <i class="fas fa-shopping-cart"></i>Cart
+                    <span class="badge">{{Session::has('cart') ? Session::get('cart')->totalQty : ''}}</span>
+                </a>
             </li>
 
             <li class="nav-item dropdown">
                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                    {{ Auth::user()->name }} <span class="caret"></span>
+                    <i class="fas fa-user" aria-hidden="true"></i>{{ Auth::user()->name }} <span class="caret"></span>
                 </a>
 
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">

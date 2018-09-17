@@ -42,6 +42,11 @@ Route::post('/products', 'ProductController@store');
 Route::get('/products/edit/{id}', 'ProductController@edit');
 Route::patch('/products/{id}', 'ProductController@update');
 Route::get('/products/delete/{id}', 'ProductController@destroy');
+Route::get('/products/add-to-cart/{id}', 'ProductController@addToCart');
+Route::get('/products/shopping-cart', 'ProductController@shoppingCart');
+Route::get('/checkout', 'ProductController@checkOut');
+Route::post('/checkout', 'ProductController@postCheckOut');
+Route::get('/products/user_orders', 'ProductController@getUserOrders');
 
 // Feature Routes
 Route::get('/features', 'FeatureController@index');

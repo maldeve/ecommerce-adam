@@ -6,6 +6,8 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use App\Usertype;
+use \App\Auth;
+use App\Order;
 
 class User extends Authenticatable
 {
@@ -32,5 +34,10 @@ class User extends Authenticatable
     // relate with usertype
     public function Usertype() {
         return $this->belongsTo(Usertype::class);
+    }
+
+    // relate with orders
+    public function orders() {
+        return $this->hasMany(Order::class);
     }
 }

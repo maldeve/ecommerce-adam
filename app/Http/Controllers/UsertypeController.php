@@ -7,6 +7,12 @@ use App\Usertype;
 
 class UsertypeController extends Controller
 {
+    // authentication
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
     /** usertypes table */
     public function index()
     {
