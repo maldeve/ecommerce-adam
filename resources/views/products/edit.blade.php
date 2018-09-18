@@ -60,7 +60,7 @@
     @if (Auth::user()->usertype_id == "1")
         <div class="col d-flex justify-content-center">
             <div class="card" style="width: 25rem;" align="center">
-                <img class="card-img-top" src="/storage/images/{{$product->product_image}}" style="width:400px; height:300px" alt="Card image cap">
+                <img class="card-img-top" src="{{asset('/storage/images/'.$product->product_image)}}" style="width:400px; height:300px" alt="Card image cap">
                 <div class="card-body">
                     <h5 class="card-header">Features</h5>
                     <table class="table">
