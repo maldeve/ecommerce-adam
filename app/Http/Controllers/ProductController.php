@@ -40,17 +40,36 @@ class ProductController extends Controller
             'product_name'=>'required',
             'product_price'=>'required',
             'product_description'=>'required',
-            'product_image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'product_image' => 'image|mimes:jpeg,png,jpg,gif,svg|nullable|max:1999',
             'product_status'=>'required',
         ]);
-        Product::create(request([
-            'user_id',
-            'category_id',
-            'product_name',
-            'product_price',
-            'product_description',
-            'product_status'   
-        ]));
+
+        // handle image
+        if ($request->hasFile('product_image')) {
+            // get filename with extesion
+            $fileNameWithExt = $request->file('product_image')->getClientOriginalName();
+            // get just filename
+            $filename = pathinfo($fileNameWithExt, PATHINFO_FILENAME);
+            // get just extension
+            $extension = $request->file('product_image')->getClientOriginalExtension();
+            // filename to store
+            $fileNameToStore = $filename.'_'.time().'.'.$extension;
+            // upload image
+            $path = $request->file('product_image')->storeAs('public/images', $fileNameToStore);
+        }else {
+            $fileNameToStore = 'noimage.jpg';
+        }
+
+        // save item to database
+        $product = new Product();
+        $product->user_id = Auth::user()->id;
+        $product->category_id = $request->input('category_id');
+        $product->product_name = $request->input('product_name');
+        $product->product_price = $request->input('product_price');
+        $product->product_description = $request->input('product_description');
+        $product->product_image = $fileNameToStore;
+        $product->product_status = $request->input('product_status');
+        $product->save();
         // $request->session()->flash('success_message', 'You have created a new Product');
         return redirect('/products');
     }

@@ -4,54 +4,63 @@
 
     @if (Auth::user()->usertype_id == "2")
         <div class="container">
-            <form class="form-horizontal" action="/products/{{$product->id}}" method="POST">
-                {{csrf_field()}}
-                {{method_field('PATCH')}}
-                <div class="form-group">
-                    <label for="category">Product Category</label>
-                    <select class="form-control" name="category_id" disabled>
-                        <option>{{$product->category->category_name}}</option>
-                    </select>
-                </div>
+            <div class="row justify-content-center">
+                <div class="col-md-8">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4>Edit a Product</h4>
+                            <form class="form-horizontal" action="/products/{{$product->id}}" method="POST">
+                                {{csrf_field()}}
+                                {{method_field('PATCH')}}
+                                <div class="form-group">
+                                    <label for="category">Product Category</label>
+                                    <select class="form-control" name="category_id" disabled>
+                                        <option>{{$product->category->category_name}}</option>
+                                    </select>
+                                </div>
 
-                <div class="form-group">
-                    <label for="name">Product Name</label>
-                    <input type="text" class="form-control" name="product_name" value="{{$product->product_name}}">
-                </div>
+                                <div class="form-group">
+                                    <label for="name">Product Name</label>
+                                    <input type="text" class="form-control" name="product_name" value="{{$product->product_name}}">
+                                </div>
 
-                <div class="form-group">
-                    <label for="price">Product Price</label>
-                    <input type="number" class="form-control" name="product_price" value="{{$product->product_price}}">
-                </div>
+                                <div class="form-group">
+                                    <label for="price">Product Price</label>
+                                    <input type="number" class="form-control" name="product_price" value="{{$product->product_price}}">
+                                </div>
 
-                <div class="form-group">
-                    <label for="description">Product Description</label>
-                    <textarea name="product_description" cols="3" rows="3" class="form-control">{{$product->product_description}}</textarea>
-                </div>
+                                <div class="form-group">
+                                    <label for="description">Product Description</label>
+                                    <textarea name="product_description" cols="3" rows="3" class="form-control">{{$product->product_description}}</textarea>
+                                </div>
 
-                <div class="form-group">
-                    <label for="status">Status</label>
-                    <select class="form-control" name="product_status">
-                        @if ($product->product_status == "1")
-                            <option value="1">{{"In Stock"}}</option>
-                            <option value="2">Out of Stock</option>
-                        @endif
-                        @if ($product->product_status == "2") {
-                            <option value="2">{{"Out of Stock"}}</option>
-                            <option value="1">In Stock</option>
-                        @endif 
-                    </select>
+                                <div class="form-group">
+                                    <label for="status">Status</label>
+                                    <select class="form-control" name="product_status">
+                                        @if ($product->product_status == "1")
+                                            <option value="1">{{"In Stock"}}</option>
+                                            <option value="2">Out of Stock</option>
+                                        @endif
+                                        @if ($product->product_status == "2") {
+                                            <option value="2">{{"Out of Stock"}}</option>
+                                            <option value="1">In Stock</option>
+                                        @endif 
+                                    </select>
+                                </div>
+                                <a href="/products" class="btn btn-sm btn-warning">Back</a>
+                                <button type="submit" class="btn btn-sm btn-primary">Update</button>
+                            </form>
+                        </div>
+                    </div>
                 </div>
-                <a href="/products" class="btn btn-sm btn-warning">Back</a>
-                <button type="submit" class="btn btn-sm btn-primary">Update</button>
-            </form>
+            </div>            
         </div>
     @endif
     
     @if (Auth::user()->usertype_id == "1")
         <div class="col d-flex justify-content-center">
             <div class="card" style="width: 25rem;" align="center">
-                <img class="card-img-top" src="/imgs/wine.jpg" style="width:400px; height:300px" alt="Card image cap">
+                <img class="card-img-top" src="/storage/images/{{$product->product_image}}" style="width:400px; height:300px" alt="Card image cap">
                 <div class="card-body">
                     <h5 class="card-header">Features</h5>
                     <table class="table">
