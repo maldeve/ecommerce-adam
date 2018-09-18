@@ -33,7 +33,7 @@ Route::get('/usertypes/delete/{id}', 'UsertypeController@destroy');
 
 // User Routes
 Route::get('/users', 'UserController@index');
-Route::get('/users/delete/{id}', 'UserControlsler@destroy');
+Route::get('/users/delete/{id}', 'UserController@destroy');
 
 // Product Routes
 Route::get('/products', 'ProductController@index');
