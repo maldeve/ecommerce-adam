@@ -48,7 +48,7 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
         <li class="nav-item active">
-            <button class="btn-success btn-sm"><a class="nav-link" href="/categories">upload <span class="sr-only">(current)</span></a></button>
+            <button class="btn-success btn-sm"><a class="nav-link" href="/upload">upload <span class="sr-only">(current)</span></a></button>
         </li>
         <li class="nav-item">
            <a class="nav-link" href="addBucket">add a bucket</a>
