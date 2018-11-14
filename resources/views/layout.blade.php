@@ -11,9 +11,7 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
     <!-- <link rel="stylesheet" type="text/css" href="/css/custom.css"> -->
     <!-- <script src="/js/custom.js"></script> -->
-    <style>
-			body{ background-image: url("/imgs/bg-11-full.jpg"); }
-		</style>
+    <link rel="stylesheet" type="text/css" href="/css/image_style.css">
     <title>Ecommerce</title>
   </head>
   <body>

@@ -45,7 +45,7 @@ Route::get('/products/delete/{id}', 'ProductController@destroy');
 Route::get('/products/add-to-cart/{id}', 'ProductController@addToCart');
 Route::get('/products/shopping-cart', 'ProductController@shoppingCart');
 Route::get('/checkout', 'ProductController@checkOut');
-Route::post('/checkout', 'ProductController@postCheckOut');
+Route::post('/checkout', 'ProductController@checkOutCart');
 Route::get('/products/user_orders', 'ProductController@getUserOrders');
 Route::get('/products/seller_view_orders', 'ProductController@sellerViewOrders');
 Route::patch('/products/complete_orders/{id}', 'ProductController@completeOrders');

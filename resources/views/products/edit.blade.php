@@ -58,7 +58,7 @@
     @endif
     
     @if (Auth::user()->usertype_id == "1")
-        <div class="col d-flex justify-content-center">
+        <!-- <div class="col d-flex justify-content-center">
             <div class="card" style="width: 25rem;" align="center">
                 <img class="card-img-top" src="{{asset('/storage/images/'.$product->product_image)}}" style="width:400px; height:300px" alt="Card image cap">
                 <div class="card-body">
@@ -81,7 +81,131 @@
                     <a href="/products/add-to-cart/{{$product->id}}" class="btn btn-sm btn-primary">Add to Cart</a>
                 </div>
             </div>
-        </div>     
+        </div>   -->
+
+        <div class="container">
+            <br>
+            <h3 class="text-center">Details</h3>
+            <hr>
+
+            <div class="card">
+                <div class="row">
+                    <aside class="col-sm-5 border-right">
+                        <article class="gallery-wrap">
+                            <div class="img-big-wrap">
+                                <div>
+                                    <a href="#"><img src="{{asset('/storage/images/'.$product->product_image)}}"></a>
+                                </div>
+                            </div>
+                            <!-- slider-product.// -->
+                            <div class="img-small-wrap">
+                                <div class="item-gallery"> <img src="https://s9.postimg.org/tupxkvfj3/image.jpg"> </div>
+                                <div class="item-gallery"> <img src="https://s9.postimg.org/tupxkvfj3/image.jpg"> </div>
+                                <div class="item-gallery"> <img src="https://s9.postimg.org/tupxkvfj3/image.jpg"> </div>
+                                <div class="item-gallery"> <img src="https://s9.postimg.org/tupxkvfj3/image.jpg"> </div>
+                            </div>
+                            <!-- slider-nav.// -->
+                        </article>
+                        <!-- gallery-wrap .end// -->
+                    </aside>
+
+                    <aside class="col-sm-7">
+                        <article class="card-body p-5">
+                            <h3 class="title mb-3">{{$product->product_name}}</h3>
+
+                            <p class="price-detail-wrap">
+                                <span class="price h3 text-warning"> 
+                                    <span class="currency">US $</span><span class="num">{{$product->product_price}}</span>
+                                </span>
+                            </p>
+                            <!-- price-detail-wrap .// -->
+                            <dl class="item-property">
+                                <dt>Description</dt>
+                                <dd>
+                                    <p> {{$product->product_description}} </p>
+                                </dd>
+                            </dl>
+                            <dl class="param param-feature">
+                                <dt>Category</dt>
+                                <dd>{{$product->category->category_name}}</dd>
+                            </dl>
+                            <!-- item-property-hor .// -->
+                            <dl class="param param-feature">
+                                <dt>Status</dt>
+                                @if ($product->product_status == "1")
+                                <dd>{{"In Stock"}}</dd>
+                                @endif
+                                @if ($product->product_status == "2")
+                                <dd>{{"Out of Stock"}}</dd>
+                                @endif
+                            </dl>
+                            <!-- item-property-hor .// -->
+                            <hr>
+                            <div class="row">
+                                <div class="col-sm-5">
+                                    <dl class="param param-inline">
+                                        <dt>Color: </dt>
+                                        <dd>
+                                            <select class="form-control form-control-sm" style="width:70px;">
+                                                <option> Blue </option>
+                                                <option> Red </option>
+                                                <option> Black and white </option>
+                                                <option> Pink </option>
+                                            </select>
+                                        </dd>
+                                    </dl>
+                                    <!-- item-property .// -->
+                                </div>
+                                <div class="col-sm-5">
+                                    <dl class="param param-inline">
+                                        <dt>Quantity: </dt>
+                                        <dd>
+                                            <select class="form-control form-control-sm" style="width:70px;">
+                                                <option> 1 </option>
+                                                <option> 2 </option>
+                                                <option> 3 </option>
+                                            </select>
+                                        </dd>
+                                    </dl>
+                                    <!-- item-property .// -->
+                                </div>
+                                <!-- col.// -->
+                                <div class="col-sm-7">
+                                    <dl class="param param-inline">
+                                        <dt>Size: </dt>
+                                        <dd>
+                                            <label class="form-check form-check-inline">
+                                                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+                                                <span class="form-check-label">SM</span>
+                                                </label>
+                                            <label class="form-check form-check-inline">
+                                                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+                                                <span class="form-check-label">MD</span>
+                                                </label>
+                                            <label class="form-check form-check-inline">
+                                                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+                                                <span class="form-check-label">XXL</span>
+                                                </label>
+                                        </dd>
+                                    </dl>
+                                    <!-- item-property .// -->
+                                </div>
+                                <!-- col.// -->
+                            </div>
+                            <!-- row.// -->
+                            <hr>
+                            <a href="/products" class="btn btn-lg btn-warning text-uppercase"> Back </a>
+                            <a href="/products/add-to-cart/{{$product->id}}" class="btn btn-lg btn-outline-success text-uppercase"> <i class="fas fa-shopping-cart"></i> Add to cart </a>
+                        </article>
+                        <!-- card-body.// -->
+                    </aside>
+                    <!-- col.// -->
+                </div>
+                <!-- row.// -->
+            </div>
+            <!-- card.// -->
+        </div>
+        <!--container.//-->   
     @endif  
     
 @endsection

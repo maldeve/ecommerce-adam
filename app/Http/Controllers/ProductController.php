@@ -8,6 +8,7 @@ use App\Category;
 use Auth;
 use App\Product;
 use App\Order;
+use App\Order_Item;
 use Session;
 
 class ProductController extends Controller
@@ -136,21 +137,55 @@ class ProductController extends Controller
     }
     
     // post checkout
-    public function postCheckOut(Request $request) {
+    // public function postCheckOut(Request $request) {
+    //     if (!Session::has('cart')) {
+    //         return redirect('products.order_items');
+    //     }
+    //     $oldCart = Session::get('cart');
+    //     $cart = new Cart($oldCart);
+
+    //     // create a new order
+    //     $order = new Order();
+    //     $order->cart = serialize($cart);
+    //     $order->order_number = $request->input('order_number');
+
+    //     // save to the database
+    //     Auth::user()->orders()->save($order);
+
+    //     Session::forget('cart');
+    //     return redirect('/products');
+    // }
+
+    // save in orders and order items
+    public function checkOutCart(Request $request){
+        $products = Product::all();
+        $categories = Category::all();
+        $items = Order_Item::all();
         if (!Session::has('cart')) {
-            return redirect('products.order_items');
+            return view('products.order_items', compact('products', 'categories', 'items'));
         }
         $oldCart = Session::get('cart');
         $cart = new Cart($oldCart);
-
-        // create a new order
         $order = new Order();
+        // $order->user_id = Auth::user()->id;
         $order->cart = serialize($cart);
         $order->order_number = $request->input('order_number');
-
-        // save to the database
+        // $order->order_number = str_random($chars);
         Auth::user()->orders()->save($order);
-
+         
+        // save in order_items
+        $order_id = $order->id;
+        
+        foreach ($cart->items as $item) {
+            $order_item = new Order_Item();
+            $order_item->order_id = $order_id;
+            $order_item->seller = $item['seller'];
+            $order_item->product_id = $item['product_id'];
+            $order_item->quantity = $item['qty'];
+            $order_item->price = $item['price'];
+            
+            $order_item->save();
+        }
         Session::forget('cart');
         return redirect('/products');
     }
@@ -168,16 +203,34 @@ class ProductController extends Controller
     // seller view orders
     public function sellerViewOrders() {
         $orders = Order::all();
-        $orders -> transform(function($order, $key){
-            $order->cart = unserialize($order->cart);
-            return $order;
-        });
-        return view('products.seller_view_orders', ['orders' => $orders]);
+        $order_items = Order_Item::all();
+        // $orders -> transform(function($order, $key){
+        //     $order->cart = unserialize($order->cart);
+        //     return $order;
+        // });
+        // return view('products.seller_view_orders', ['orders' => $orders]);
+        return view('products.seller_view_orders', compact(['orders', 'order_items']));
     }
 
     // change order status to complete
-    public function completeOrders(Request $request, $id) {
-        Order::where('id', $id)->update(request(['order_status_id']));
+    public function completeOrders($id) {
+        
+        // Order_Item::where('id', $id)->update(request(['order_item_status']));
+
+        $updateOrderItem = Order_Item::find($id);
+        $updateOrderItem->order_item_status = 2;
+        $updateOrderItem->save();
+        
+        $orderItems = Order_Item::where('order_id', '=', $updateOrderItem->order_id)
+        ->where('order_item_status', '=', 1)->get();
+        
+        if(count($orderItems) == 0)
+        {
+        $order = Order::where('id', '=', $updateOrderItem->order_id)->first();
+        $order->order_status_id = 2;
+        $order->save();
+        }
+
         return back();
     }
 }

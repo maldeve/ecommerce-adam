@@ -11,9 +11,10 @@
                                 <ul class="list-group">
                                     @foreach ($products as $product)
                                         <li class="list-group-item">
-                                            <span class="badge">{{$product['qty']}}</span>
-                                            <strong>{{$product['item']['product_name']}}</strong>
-                                            <span class="label label-success">{{$product['price']}}</span>
+                                            <strong>Seller: {{$product['item']['user_id']}}</strong> |
+                                            <strong>Item: {{$product['item']['product_name']}}</strong> |
+                                            <span class="badge">Units: {{$product['qty']}}</span> |
+                                            <span class="label label-success">Price: {{$product['price']}}</span>
                                             <div class="btn-group">
                                                 <button type="button" class="btn btn-primary btn-sm dropdown-toggle" data-toggle="dropdown">Action
                                                     <span class="caret"></span>

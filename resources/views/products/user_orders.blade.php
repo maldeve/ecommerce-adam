@@ -14,6 +14,7 @@
                                     <ul class="list-group">
                                         @foreach ($order->cart->items as $item)
                                         <li class="list-group-item">
+                                            <span class="badge">Seller:</span> {{$item['item']['user_id']}}
                                             <span class="badge">Product:</span> {{$item['item']['product_name']}} | 
                                             <span class="badge">Units:</span> {{$item['qty']}} | 
                                             <span class="badge">Price:</span> {{$item['price']}} ksh
