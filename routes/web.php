@@ -15,6 +15,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+//Mawingu HeatMap
+Route::get('/upload', 'HeatMapController@uploadIndex');
+Route::post('import', 'HeatMapController@uploadExcel');
+
 // Category Routes
 Route::get('/categories', 'CategoryController@index');
 Route::get('/categories/create', 'CategoryController@create');

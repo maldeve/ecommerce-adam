@@ -11,6 +11,10 @@ class HeatMapController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function uploadIndex(){
+
+        return view('heatmap.uploadExcel');
+    }
     public function index()
     {
         //
