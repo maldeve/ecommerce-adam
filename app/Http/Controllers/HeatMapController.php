@@ -84,7 +84,8 @@ class HeatMapController extends Controller
     public function create()
     {
         //
-        return view('mawingu.createBucket');
+        // return view('mawingu.createBucket');
+        return view('mawingu.createMerchantBucket');
     }
 
     /**
