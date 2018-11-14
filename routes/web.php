@@ -16,6 +16,8 @@ Route::get('/', function () {
 });
 
 //Mawingu HeatMap
+Route::get('/map', 'HeatMapController@map');
+Route::get('/mapCoordinates', 'HeatMapController@mapCoordinates');
 Route::get('/upload', 'HeatMapController@uploadIndex');
 Route::post('import', 'HeatMapController@uploadExcel');
 Route::get('/uploadBucket', 'HeatMapController@indexBucket');
@@ -23,11 +25,9 @@ Route::post('/uploadBucket', 'HeatMapController@uploadBucket');
 Route::get('heatMap', 'HeatMapController@index');
 Route::get('/heatMap/readData', 'HeatMapController@readData');
 Route::get('/addBucket', 'HeatMapController@create');
-<<<<<<< HEAD
 Route::post('/createBucket', 'HeatMapController@store');
 Route::get('/salesReport', 'HeatMapController@salesIndex');
 Route::post('/salesReports', 'HeatMapController@salesReport');
-=======
 Route::post('/createBucket', 'HeatMapController@save');
 Route::get('/search/Bucket', 'HeatMapController@displayForm');
 Route::post('/searchBucket', 'HeatMapController@displaySearch');
@@ -35,7 +35,6 @@ Route::patch('/bucket/delete/{id}', 'HeatMapController@destroy');
 Route::get('/bucket/edit/{id}', 'HeatMapController@edit');
 Route::patch('/bucket/{bucketId}', 'HeatMapController@update'); 
 // Route::post('/createBucket', 'HeatMapController@store');
->>>>>>> dd1453869152a84f1ecdf768e12096316e6f5918
 
 
 

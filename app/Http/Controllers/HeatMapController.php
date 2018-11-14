@@ -293,4 +293,17 @@ class HeatMapController extends Controller
     //    echo ("Hello Modal");
         return view('heatmap.salesReportMonth',compact('allBuckets','request','totalSales','traffic'));
     }
+    public function map()
+    {
+        $coordinates = DB::table('merchant_locations')->get();
+        // dd($coordinates);
+        foreach($coordinates as $coordinate){
+            echo ('new.google.map.LatLng('.$coordinate->latitude.',' .$coordinate->longitude.')');
+        }
+        return view('heatmap.coordinates');
+    }
+    public function mapCoordinates(){
+        $coordinates = DB::table('merchant_locations')->get();
+        echo json_encode($coordinates);
+    }
 }
