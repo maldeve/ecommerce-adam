@@ -7,6 +7,10 @@ use Illuminate\Support\Facades\DB;
 use Session;
 use Excel;
 use File;
+use Illuminate\Support\Facades\Input;
+use App\HeatMap;
+use Auth;
+
 
 class HeatMapController extends Controller
 {
@@ -84,7 +88,7 @@ class HeatMapController extends Controller
     public function create()
     {
         //
-        return view('mawingu.createBucket');
+        return view('manageBuckets.createBucket');
     }
 
     /**
@@ -113,6 +117,27 @@ class HeatMapController extends Controller
         return redirect('/heatMap');
     }
 
+    public function displaySearch(){
+        $search = Input::get("search");
+        if( $search !=""){
+            $buckets = HeatMap::where('bucket_name' ,'LIKE','%' .$search. '%')->get();;
+            
+         }
+         
+         if(count($buckets)> 0 ){
+            return view('manageBuckets.searchBucket')->withDetails($buckets)->withQuery($search);
+        }
+        else{
+            return view('manageBuckets.searchBucket')->withMessage('no user found');  
+        }
+       
+    }
+
+
+    function displayForm(){
+        return view("manageBuckets.searchBucket");
+    }
+
     /**
      * Display the specified resource.
      *
@@ -122,6 +147,7 @@ class HeatMapController extends Controller
     public function show($id)
     {
         //
+
     }
 
     /**
@@ -133,6 +159,9 @@ class HeatMapController extends Controller
     public function edit($id)
     {
         //
+        $bucket = heatMap::find($id);
+       
+       return view('manageBuckets.edit', compact('bucket'));
     }
 
     /**
@@ -145,6 +174,22 @@ class HeatMapController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $this->validate(request(), [
+            'bucket_name' => 'required',
+            
+        ]);
+        //posting to database
+
+        heatMap::where('id', $id)->update(request(['bucket_name']));
+        $this->validate(request(), [
+            'bucket_name' => 'required',
+           
+        ]);
+        //posting to database
+
+        heatMap::where('id', $id)->update(request(['bucket_name']));
+
+        return redirect('/bucket');
     }
 
     /**
@@ -156,5 +201,9 @@ class HeatMapController extends Controller
     public function destroy($id)
     {
         //
+        HeatMap::where('id', $id) ->update([
+            'deleted' => 1, 'deleted_on' => date('Y-m-d H:i:s'), 
+        ]);
+        return redirect('/');
     }
 }

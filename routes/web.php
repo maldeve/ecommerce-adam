@@ -21,6 +21,11 @@ Route::post('import', 'HeatMapController@uploadExcel');
 Route::get('heatMap', 'HeatMapController@index');
 Route::get('/addBucket', 'HeatMapController@create');
 Route::post('/createBucket', 'HeatMapController@save');
+Route::get('/search/Bucket', 'HeatMapController@displayForm');
+Route::post('/searchBucket', 'HeatMapController@displaySearch');
+Route::patch('/bucket/delete/{id}', 'HeatMapController@destroy');
+Route::get('/bucket/edit/{id}', 'HeatMapController@edit');
+Route::patch('/bucket/{bucketId}', 'HeatMapController@update'); 
 
 
 
