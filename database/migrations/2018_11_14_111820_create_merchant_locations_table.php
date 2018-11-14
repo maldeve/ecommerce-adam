@@ -16,18 +16,19 @@ class CreateMerchantLocationsTable extends Migration
         Schema::create('merchant_locations', function (Blueprint $table) {
             $table->increments('id');
             $table->string('district')->nullable();
-            $table->string('bs_name');
-            $table->string('equipment');
-            $table->string('client_type');
-            $table->string('first_name');
-            $table->string('second_name');
+            $table->string('bs_name')->nullable();
+            $table->string('equipment')->nullable();
+            $table->string('client_type')->nullable();
+            $table->string('first_name')->nullable();
+            $table->string('second_name')->nullable();
             $table->string('address')->nullable();
-            $table->string('equipment1');
+            $table->string('equipment1')->nullable();
             $table->string('ip_address')->nullable();
             $table->string('bucket_name');
             $table->float('latitude',12,8);
             $table->float('longitude',12,8);
-            $table->string('bucket_name_ip');
+            $table->string('bucket_name_ip')->nullable();
+            $table->integer('deleted')->default('0');
             $table->timestamps();
         });
     }

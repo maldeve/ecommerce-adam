@@ -19,14 +19,14 @@
             <input class="form-control" type="text" name="first_name">
         </div>
         <div class="form-group col-md-6">
-            <label for="lastName">Last Name</label>
-            <input name="last_name" type="text" class="form-control">
+            <label for="lastName">Second Name</label>
+            <input name="second_name" type="text" class="form-control">
         </div>
         <div class="form-group col-md-6">
             <label for="email">Client Type</label>
             <select name="client_type" class="form-control">
                 <option>--Choose Client Type--</option>
-                <option>MKT<option>
+                <option value="MKT">MKT<option>
             <select>
         </div>
         <div class="form-group col-md-6">
@@ -49,28 +49,28 @@
         <div class="col-sm-5">
         <div class="form-group col-md-6">
             <label for="nationalId">BS Name</label>
-            <input name="bs_name" class="form-control">
+            <input name="bs_name" class="form-control" type="text">
         </div>
         <div class="form-group col-md-6">
             <label for="email">Equipment</label>
             <select name="equipment" class="form-control">
                 <option>--Choose Equipment--</option>
-                <option>CPE<option>
+                <option value="CPE">CPE<option>
             <select>
         </div>
         <div class="form-group col-md-6">
             <label for="email">Equipment1</label>
             <select name="equipment1" class="form-control">
                 <option>--Choose Equipment--</option>
-                <option>PB5<option>
-                <option>PBM5<option>      
-                <option>PBE 5AC 500<option>
-                <option>PB3<option>
-                <option>NBM5<option>
-                <option>NB19<option>
-                <option>LB5<option>
-                <option>LB3<option>
-                <option>LB23<option>
+                <option value="PB5">PB5<option>
+                <option value="PBM5">PBM5<option>      
+                <option value="PBE 5AC 500">PBE 5AC 500<option>
+                <option value="PB3">PB3<option>
+                <option value="NBM5">NBM5<option>
+                <option value="NB19">NB19<option>
+                <option value="LB5">LB5<option>
+                <option value="LB3">LB3<option>
+                <option value="LB23">LB23<option>
             <select>
         </div>
         <div class="form-group col-md-6">
@@ -83,7 +83,7 @@
         </div>
         <div class="form-group col-md-6">
             <label for="lastName">Bucket Name IP</label>
-            <input name="bucket_name_ip" class="form-control">
+            <input name="bucket_name_ip" class="form-control" type="text">
         </div>
         <div class="form-group col-md-6">
             <button class="btn btn-primary sm" type="submit">Submit</button>

@@ -8,6 +8,7 @@ use Session;
 use Excel;
 use File;
 use App\HeatMap;
+use App\MerchantLocation;
 
 class HeatMapController extends Controller
 {
@@ -17,8 +18,12 @@ class HeatMapController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function uploadIndex(){
-
+        // dd(DB::table('heat_maps')->get());
         return view('heatmap.uploadExcel');
+    }
+    public function indexBucket(){
+        // dd(DB::table('heat_maps')->get());
+        return view('heatmap.uploadBucketExcel');
     }
     public function uploadExcel(Request $request){
         //validate the xls file
@@ -44,8 +49,7 @@ class HeatMapController extends Controller
                         $insert[] = [
                         'bucket_name' => $value->bucket_name,
                         'data_throughput' => $value->data_throughput,
-                        'latitude' => $value->latitude,
-                        'longitude' => $value->longitude,
+                        'throughput_date' => $value->throughput_date,
                         ];
                     }
  
@@ -70,6 +74,57 @@ class HeatMapController extends Controller
         }
     }
  
+
+    public function uploadBucket(Request $request){
+        //validate the xls file
+        $this->validate($request, array(
+            'file'      => 'required'
+        ));
+ 
+        if($request->hasFile('file')){
+            // dd($request->hasFile('file'));
+            $extension = File::extension($request->file->getClientOriginalName());
+            // dd($extension);
+            if ($extension == "xlsx" || $extension == "xls" || $extension == "csv") {
+                // dd($extension == "xls");
+                $path = $request->file->getRealPath();
+                // dd($path); = "C:\xampp\tmp\phpE695.tmp"
+                $data = Excel::load($path, function($reader) {
+                })->get();
+                // dd($data);
+                if(!empty($data) && $data->count()){
+ 
+                    foreach ($data as $key => $value) {
+                        // dd($value->Bucket_Nmae);
+                        $insert[] = [
+                        'bucket_name' => $value->bucket_name,
+                        'latitude' => $value->latitude,
+                        'longitude' => $value->longitude,
+                        ];
+                    }
+ 
+                    if(!empty($insert)){
+ 
+                        $insertData = DB::table('merchant_locations')->insert($insert);
+                        if ($insertData) {
+                            Session::flash('success', 'Your Data has successfully imported');
+                        }else {                        
+                            Session::flash('error', 'Error inserting the data..');
+                            return back();
+                        }
+                    }
+                }
+ 
+                return back();
+ 
+            }else {
+                Session::flash('error', 'File is a '.$extension.' file.!! Please upload a valid xls/csv file..!!');
+                return back();
+            }
+        }
+    }
+ 
+
 
     public function index()
     {
@@ -100,16 +155,12 @@ class HeatMapController extends Controller
         //
         $this->validate(request(), [
             'bucket_name' =>'required',
-            'data_througput' =>'required',
             'latitude' =>'required',
             'longitude' =>'required',
            
         ]);
-        HeatMap::create(request([
-            'bucket_name',
-            'data_througput',
-            'latitude',
-            'longitude',
+        MerchantLocation::create(request([
+            'district','bs_name','equipment','client_type','first_name','second_name','second_name','address','equipment1','ip_address','bucket_name','latitude','longitude','bucket_name_ip'
         ]));
 
         return redirect('/heatMap');
