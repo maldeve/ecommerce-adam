@@ -16,6 +16,8 @@ Route::get('/', function () {
 });
 
 //Mawingu HeatMap
+Route::get('/map', 'HeatMapController@map');
+Route::get('/mapCoordinates', 'HeatMapController@mapCoordinates');
 Route::get('/upload', 'HeatMapController@uploadIndex');
 Route::post('import', 'HeatMapController@uploadExcel');
 Route::get('/uploadBucket', 'HeatMapController@indexBucket');
