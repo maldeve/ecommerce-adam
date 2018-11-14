@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\DB;
 use Session;
 use Excel;
 use File;
+use App\HeatMap;
 
 class HeatMapController extends Controller
 {

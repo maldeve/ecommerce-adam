@@ -38,6 +38,7 @@
         z-index: 5;
       }
     </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <link rel="stylesheet" href="/css/custom.css">
   </head>
@@ -66,13 +67,21 @@
       <button onclick="changeOpacity()">Change opacity</button>
       <button onclick="upload()">Upload Data</button>
       <button onclick="add()">Add bucket</button>
+      <button class="btn btn-info pull-right btn-xs" id="read-data">Read Data</button>
     </div>
     <div id="map"></div>
-    <script>
+    <script type="text/javascript">
 
       // This example requires the Visualization library. Include the libraries=visualization
       // parameter when you first load the API. For example:
       // <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=visualization">
+
+      // test if data is coming
+      $('#read-data').on('click', function() {
+        $.get("{{ URL::to('heatMap/readData') }}", function(data) {
+          console.log(data);
+        })
+      })
 
       var map, heatmap;
 
@@ -128,9 +137,9 @@
       // // Heatmap data: 500 Points
       function getPoints() {
 
-        $.get("{{URL::to('heatMap/readData')}}", function (data) {
-          console.log(data);
-        }) 
+        // $.get("{{ URL::to('heatMap/readData') }}", function (data) {
+        //   var_dump(data);
+        // }) 
 
       //   return [
       //     new google.maps.LatLng(37.782551, -122.445368),
