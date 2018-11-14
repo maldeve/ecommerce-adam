@@ -55,7 +55,7 @@
       
         </li>
         <li class="nav-item">
-           <a class="nav-link"  class="btn btn-success" href="/search/Bucket">Remove a bucket</a>
+           <a class="nav-link"  class="btn btn-success" href="/search/Bucket">Manage Buckets</a>
       
         </li>
        
