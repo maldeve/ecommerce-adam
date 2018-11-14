@@ -80,6 +80,9 @@
                 <div class="title m-b-md">
                     Ecommerce
                 </div>
+                <div class="links">
+                  <a href="/heatMap">heat Map Project</a>
+                </div>
             </div>
         </div>
     </body>

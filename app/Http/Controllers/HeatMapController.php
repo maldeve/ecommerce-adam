@@ -64,6 +64,7 @@ class HeatMapController extends Controller
     public function index()
     {
         //
+        return view('mawingu.heatMap');
     }
 
     /**
@@ -74,6 +75,7 @@ class HeatMapController extends Controller
     public function create()
     {
         //
+        return view('mawingu.createBucket');
     }
 
     /**
@@ -85,6 +87,21 @@ class HeatMapController extends Controller
     public function store(Request $request)
     {
         //
+        $this->validate(request(), [
+            'bucket_name' =>'required',
+            'data_througput' =>'required',
+            'latitude' =>'required',
+            'longitude' =>'required',
+           
+        ]);
+        HeatMap::create(request([
+            'bucket_name',
+            'data_througput',
+            'latitude',
+            'longitude',
+        ]));
+
+        return redirect('/heatMap');
     }
 
     /**
