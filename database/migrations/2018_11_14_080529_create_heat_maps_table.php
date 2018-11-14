@@ -15,10 +15,10 @@ class CreateHeatMapsTable extends Migration
     {
         Schema::create('heat_maps', function (Blueprint $table) {
                 $table->increments('id');
-                $table->string('Bucket_Name');
-                $table->decimal('Data_throughput',11,8);
-                $table->decimal('Latitude',11,8);
-                $table->decimal('Longitude',11,8);
+                $table->string('bucket_name');
+                $table->decimal('data_throughput',11,8);
+                $table->float('latitude',12,8);
+                $table->float('longitude',12,8);
                 $table->timestamps();
             });
     }

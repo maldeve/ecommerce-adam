@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Session;
+use Excel;
+use File;
 
 class HeatMapController extends Controller
 {
@@ -22,20 +26,25 @@ class HeatMapController extends Controller
         ));
  
         if($request->hasFile('file')){
+            // dd($request->hasFile('file'));
             $extension = File::extension($request->file->getClientOriginalName());
+            // dd($extension);
             if ($extension == "xlsx" || $extension == "xls" || $extension == "csv") {
- 
+                // dd($extension == "xls");
                 $path = $request->file->getRealPath();
+                // dd($path); = "C:\xampp\tmp\phpE695.tmp"
                 $data = Excel::load($path, function($reader) {
                 })->get();
+                // dd($data);
                 if(!empty($data) && $data->count()){
  
                     foreach ($data as $key => $value) {
+                        // dd($value->Bucket_Nmae);
                         $insert[] = [
-                        'Bucket_Name' => $value->Bucket_Name,
-                        'Data_throughput' => $value->Data_throughput,
-                        'Latitude' => $value->Latitude,
-                        'Longitude' => $value->Longitude,
+                        'bucket_name' => $value->bucket_name,
+                        'data_throughput' => $value->data_throughput,
+                        'latitude' => $value->latitude,
+                        'longitude' => $value->longitude,
                         ];
                     }
  
