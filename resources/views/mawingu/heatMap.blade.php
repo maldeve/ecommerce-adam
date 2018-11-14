@@ -49,11 +49,20 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
         <li class="nav-item active">
+<<<<<<< HEAD
+           <a class="nav-link" href="" class="btn btn-success">upload <span class="sr-only">(current)</span></a>
+=======
             <button class="btn-success btn-sm"><a class="nav-link" href="/upload">Upload Throughput <span class="sr-only">(current)</span></a></button>
             <button class="btn-success btn-sm"><a class="nav-link" href="/uploadBucket">Upload Bucket<span class="sr-only">(current)</span></a></button>
+>>>>>>> a1c20320294bbfb81bd723c64c671c323a066c60
         </li>
         <li class="nav-item">
-           <a class="nav-link" href="addBucket">add a bucket</a>
+           <a class="nav-link"  class="btn btn-success" href="addBucket">add a bucket</a>
+      
+        </li>
+        <li class="nav-item">
+           <a class="nav-link"  class="btn btn-success" href="/search/Bucket">Manage Buckets</a>
+      
         </li>
        
         </ul>

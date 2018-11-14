@@ -7,8 +7,15 @@ use Illuminate\Support\Facades\DB;
 use Session;
 use Excel;
 use File;
+<<<<<<< HEAD
+use Illuminate\Support\Facades\Input;
+use App\HeatMap;
+use Auth;
+
+=======
 use App\HeatMap;
 use App\MerchantLocation;
+>>>>>>> a1c20320294bbfb81bd723c64c671c323a066c60
 
 class HeatMapController extends Controller
 {
@@ -140,8 +147,12 @@ class HeatMapController extends Controller
     public function create()
     {
         //
+<<<<<<< HEAD
+        return view('manageBuckets.createBucket');
+=======
         // return view('mawingu.createBucket');
         return view('mawingu.createMerchantBucket');
+>>>>>>> a1c20320294bbfb81bd723c64c671c323a066c60
     }
 
     /**
@@ -166,6 +177,27 @@ class HeatMapController extends Controller
         return redirect('/heatMap');
     }
 
+    public function displaySearch(){
+        $search = Input::get("search");
+        if( $search !=""){
+            $buckets = HeatMap::where('bucket_name' ,'LIKE','%' .$search. '%')->get();;
+            
+         }
+         
+         if(count($buckets)> 0 ){
+            return view('manageBuckets.searchBucket')->withDetails($buckets)->withQuery($search);
+        }
+        else{
+            return view('manageBuckets.searchBucket')->withMessage('no user found');  
+        }
+       
+    }
+
+
+    function displayForm(){
+        return view("manageBuckets.searchBucket");
+    }
+
     /**
      * Display the specified resource.
      *
@@ -174,9 +206,14 @@ class HeatMapController extends Controller
      */
     public function readData()
     {
+<<<<<<< HEAD
+        //
+
+=======
         //get data
         $heatmaps = HeatMap::all();
         return view('mawingu.heatMap', compact('heatmaps'));
+>>>>>>> a1c20320294bbfb81bd723c64c671c323a066c60
     }
 
     /**
@@ -188,6 +225,9 @@ class HeatMapController extends Controller
     public function edit($id)
     {
         //
+        $bucket = heatMap::find($id);
+       
+       return view('manageBuckets.edit', compact('bucket'));
     }
 
     /**
@@ -200,6 +240,22 @@ class HeatMapController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $this->validate(request(), [
+            'bucket_name' => 'required',
+            
+        ]);
+        //posting to database
+
+        heatMap::where('id', $id)->update(request(['bucket_name']));
+        $this->validate(request(), [
+            'bucket_name' => 'required',
+           
+        ]);
+        //posting to database
+
+        heatMap::where('id', $id)->update(request(['bucket_name']));
+
+        return redirect('/bucket');
     }
 
     /**
@@ -211,6 +267,10 @@ class HeatMapController extends Controller
     public function destroy($id)
     {
         //
+        HeatMap::where('id', $id) ->update([
+            'deleted' => 1, 'deleted_on' => date('Y-m-d H:i:s'), 
+        ]);
+        return redirect('/');
     }
     public function salesIndex(){
         return view('heatmap.salesReport');
