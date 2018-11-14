@@ -4,18 +4,14 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Input;
 use Session;
 use Excel;
 use File;
-<<<<<<< HEAD
-use Illuminate\Support\Facades\Input;
+
 use App\HeatMap;
 use Auth;
-
-=======
-use App\HeatMap;
 use App\MerchantLocation;
->>>>>>> a1c20320294bbfb81bd723c64c671c323a066c60
 
 class HeatMapController extends Controller
 {
@@ -147,12 +143,9 @@ class HeatMapController extends Controller
     public function create()
     {
         //
-<<<<<<< HEAD
         return view('manageBuckets.createBucket');
-=======
         // return view('mawingu.createBucket');
         return view('mawingu.createMerchantBucket');
->>>>>>> a1c20320294bbfb81bd723c64c671c323a066c60
     }
 
     /**
@@ -206,14 +199,11 @@ class HeatMapController extends Controller
      */
     public function readData()
     {
-<<<<<<< HEAD
         //
 
-=======
         //get data
         $heatmaps = HeatMap::all();
         return view('mawingu.heatMap', compact('heatmaps'));
->>>>>>> a1c20320294bbfb81bd723c64c671c323a066c60
     }
 
     /**
