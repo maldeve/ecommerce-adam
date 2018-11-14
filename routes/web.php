@@ -18,7 +18,10 @@ Route::get('/', function () {
 //Mawingu HeatMap
 Route::get('/upload', 'HeatMapController@uploadIndex');
 Route::post('import', 'HeatMapController@uploadExcel');
+Route::get('/uploadBucket', 'HeatMapController@indexBucket');
+Route::post('/uploadBucket', 'HeatMapController@uploadBucket');
 Route::get('heatMap', 'HeatMapController@index');
+Route::get('/heatMap/readData', 'HeatMapController@readData');
 Route::get('/addBucket', 'HeatMapController@create');
 Route::post('/createBucket', 'HeatMapController@save');
 Route::get('/search/Bucket', 'HeatMapController@displayForm');
@@ -26,6 +29,8 @@ Route::post('/searchBucket', 'HeatMapController@displaySearch');
 Route::patch('/bucket/delete/{id}', 'HeatMapController@destroy');
 Route::get('/bucket/edit/{id}', 'HeatMapController@edit');
 Route::patch('/bucket/{bucketId}', 'HeatMapController@update'); 
+// Route::post('/createBucket', 'HeatMapController@store');
+
 
 
 
