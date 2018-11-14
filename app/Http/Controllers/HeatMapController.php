@@ -212,4 +212,35 @@ class HeatMapController extends Controller
     {
         //
     }
+    public function salesIndex(){
+        return view('heatmap.salesReport');
+    }
+    public function salesReport(Request $request){
+        // dd($request->year);
+        $sales = DB::table('heat_maps')->get();
+        $totalSales = array();
+        $totalTraffic = array();
+        foreach($sales as $sale){
+            $date = $sale->throughput_date;
+            $d = date_parse_from_format("Y-m-d", $date);
+            // dd($d["year"] == $request->year);
+            if(($d["month"] == $request->month) && ($d["year"] == $request->year)){
+                array_push($totalSales, $sale->bucket_name);
+                $traffic = DB::table('heat_maps')->sum('data_throughput');
+                // $result = mysql_query('SELECT SUM(data_throughput) AS data_throughput FROM heat_maps'); 
+                
+                // dd(sizeof($totalSales));
+                // $row = mysql_fetch_assoc($result); 
+                // $sum = $row['data_throughput'];
+                // dd($sum);
+            }
+            else{
+                echo ("Data for ".$request->year ."/". $request->month." is not available");
+            }
+            // return view('heatmap.salesReportMonth');
+        }
+        $allBuckets = sizeof($totalSales);
+    //    echo ("Hello Modal");
+        return view('heatmap.salesReportMonth',compact('allBuckets','request','totalSales','traffic'));
+    }
 }

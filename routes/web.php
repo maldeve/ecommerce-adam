@@ -24,6 +24,8 @@ Route::get('heatMap', 'HeatMapController@index');
 Route::get('/heatMap/readData', 'HeatMapController@readData');
 Route::get('/addBucket', 'HeatMapController@create');
 Route::post('/createBucket', 'HeatMapController@store');
+Route::get('/salesReport', 'HeatMapController@salesIndex');
+Route::post('/salesReports', 'HeatMapController@salesReport');
 
 
 
