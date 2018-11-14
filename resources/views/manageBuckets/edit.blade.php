@@ -15,11 +15,77 @@
         {{ method_field('PATCH') }}
         <div class="form-group col-md-6">
             <br>
-            <label for="expense name">Expense Name</label>
-            <input class="form-control" type="text" name="expense_name" value="{{$bucket->bucket_name}}">
+            <label for="expense name">BucketName Name</label>
+            <input class="form-control" type="text" name="bucket_name" value="{{$bucket->bucket_name}}">
         </div>
+        <div class="form-group col-md-6">
+            <br>
+            <label for="expense name">BucketName Name</label>
+            <input class="form-control" type="text" name="bucket_name" value="{{$bucket->bucket_name}}">
+        </div>
+        <div class="form-group col-md-6">
+            <br>
+            <label for="expense name">BucketName Name</label>
+            <input class="form-control" type="text" name="district" value="{{$bucket->district}}">
+        </div>
+        <div class="form-group col-md-6">
+            <br>
+            <label for="expense name">BucketName Name</label>
+            <input class="form-control" type="text" name="bs_name" value="{{$bucket->bs_name}}">
+        </div>
+        <div class="form-group col-md-6">
+            <br>
+            <label for="expense name">BucketName Name</label>
+            <input class="form-control" type="text" name="equipment" value="{{$bucket->equipment}}">
+        </div>
+        <div class="form-group col-md-6">
+            <br>
+            <label for="expense name">BucketName Name</label>
+            <input class="form-control" type="text" name="client_type" value="{{$bucket->client_type}}">
+        </div>
+        <div class="form-group col-md-6">
+            <br>
+            <label for="expense name">BucketName Name</label>
+            <input class="form-control" type="text" name="first_name" value="{{$bucket->first_name}}">
+        </div>
+        <div class="form-group col-md-6">
+            <br>
+            <label for="expense name">BucketName Name</label>
+            <input class="form-control" type="text" name="second_name" value="{{$bucket->second_name}}">
+        </div>
+        <div class="form-group col-md-6">
+            <br>
+            <label for="expense name">BucketName Name</label>
+            <input class="form-control" type="text" name="address" value="{{$bucket->address}}">
+        </div>
+        <div class="form-group col-md-6">
+            <br>
+            <label for="expense name">BucketName Name</label>
+            <input class="form-control" type="text" name="equipment1" value="{{$bucket->equipment1}}">
+        </div>
+        <div class="form-group col-md-6">
+            <br>
+            <label for="expense name">BucketName Name</label>
+            <input class="form-control" type="text" name="ip_address" value="{{$bucket->ip_address}}">
+        </div>
+        <div class="form-group col-md-6">
+            <br>
+            <label for="expense name">BucketName Name</label>
+            <input class="form-control" type="text" name="latitude" value="{{$bucket->latitude}}">
+        </div>
+        <div class="form-group col-md-6">
+            <br>
+            <label for="expense name">BucketName Name</label>
+            <input class="form-control" type="text" name="longitude" value="{{$bucket->longitude}}">
+        </div>
+        <div class="form-group col-md-6">
+            <br>
+            <label for="expense name">BucketName Name</label>
+            <input class="form-control" type="text" name="bucket_name_ip" value="{{$bucket->bucket_name_ip}}">
+        </div>
+        
        <div class="form-group col-md-6">
-            <a href="/buckets" class="btn btn-warning">Go Back</a>
+            <a href="/search/Bucket" class="btn btn-warning">Go Back</a>
             <button class="btn btn-primary sm" type="submit">update</button>
         </div>
     </form>   

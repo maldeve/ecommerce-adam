@@ -16,7 +16,7 @@
             <div class="form-group col-md-6">
                 <br>
                 <label for="bucketSearch">Search Bucket</label>
-                <input class="form-control" type="text" name="search">
+                <input class="form-control" type="text" name="search" REQUIRED>
             </div>
             <div class="form-group col-md-6">
                 <a href="/heatMap" class="btn btn-warning">Go Back</a>

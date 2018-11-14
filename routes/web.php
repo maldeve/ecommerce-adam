@@ -29,6 +29,7 @@ Route::post('/searchBucket', 'HeatMapController@displaySearch');
 Route::patch('/bucket/delete/{id}', 'HeatMapController@destroy');
 Route::get('/bucket/edit/{id}', 'HeatMapController@edit');
 Route::patch('/bucket/{bucketId}', 'HeatMapController@update'); 
+Route::get('/actionsPage', 'HeatMapController@actions');
 // Route::post('/createBucket', 'HeatMapController@store');
 
 
