@@ -15,6 +15,52 @@ class HeatMapController extends Controller
 
         return view('heatmap.uploadExcel');
     }
+    public function uploadExcel(Request $request){
+        //validate the xls file
+        $this->validate($request, array(
+            'file'      => 'required'
+        ));
+ 
+        if($request->hasFile('file')){
+            $extension = File::extension($request->file->getClientOriginalName());
+            if ($extension == "xlsx" || $extension == "xls" || $extension == "csv") {
+ 
+                $path = $request->file->getRealPath();
+                $data = Excel::load($path, function($reader) {
+                })->get();
+                if(!empty($data) && $data->count()){
+ 
+                    foreach ($data as $key => $value) {
+                        $insert[] = [
+                        'Bucket_Name' => $value->Bucket_Name,
+                        'Data_throughput' => $value->Data_throughput,
+                        'Latitude' => $value->Latitude,
+                        'Longitude' => $value->Longitude,
+                        ];
+                    }
+ 
+                    if(!empty($insert)){
+ 
+                        $insertData = DB::table('heat_maps')->insert($insert);
+                        if ($insertData) {
+                            Session::flash('success', 'Your Data has successfully imported');
+                        }else {                        
+                            Session::flash('error', 'Error inserting the data..');
+                            return back();
+                        }
+                    }
+                }
+ 
+                return back();
+ 
+            }else {
+                Session::flash('error', 'File is a '.$extension.' file.!! Please upload a valid xls/csv file..!!');
+                return back();
+            }
+        }
+    }
+ 
+
     public function index()
     {
         //

@@ -14,9 +14,13 @@ class CreateHeatMapsTable extends Migration
     public function up()
     {
         Schema::create('heat_maps', function (Blueprint $table) {
-            $table->increments('id');
-            $table->timestamps();
-        });
+                $table->increments('id');
+                $table->string('Bucket_Name');
+                $table->decimal('Data_throughput',11,8);
+                $table->decimal('Latitude',11,8);
+                $table->decimal('Longitude',11,8);
+                $table->timestamps();
+            });
     }
 
     /**
