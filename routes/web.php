@@ -23,7 +23,7 @@ Route::post('import', 'HeatMapController@uploadExcel');
 Route::get('/uploadBucket', 'HeatMapController@indexBucket');
 Route::post('/uploadBucket', 'HeatMapController@uploadBucket');
 Route::get('heatMap', 'HeatMapController@index');
-Route::get('/heatMap/readData', 'HeatMapController@readData');
+Route::get('/readData', 'HeatMapController@readData');
 Route::get('/addBucket', 'HeatMapController@create');
 Route::post('/createBucket', 'HeatMapController@store');
 Route::get('/salesReport', 'HeatMapController@salesIndex');
@@ -35,10 +35,9 @@ Route::patch('/bucket/delete/{id}', 'HeatMapController@destroy');
 Route::get('/bucket/edit/{id}', 'HeatMapController@edit');
 Route::patch('/bucket/{bucketId}', 'HeatMapController@update'); 
 Route::get('/actionsPage', 'HeatMapController@actions');
+Route::get('/heatMapReport', 'HeatMapController@showForm');
+Route::post('/heatMapReports', 'HeatMapController@heatMapReports');
 // Route::post('/createBucket', 'HeatMapController@store');
-
-
-
 
 // Category Routes
 Route::get('/categories', 'CategoryController@index');

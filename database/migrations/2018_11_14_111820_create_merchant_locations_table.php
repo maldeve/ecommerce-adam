@@ -29,7 +29,7 @@ class CreateMerchantLocationsTable extends Migration
             $table->float('longitude',12,8);
             $table->string('bucket_name_ip')->nullable();
             $table->integer('deleted')->default('0');
-            $table->date('deleted_on');
+            $table->date('deleted_on')->nullable();
             $table->timestamps();
         });
     }
