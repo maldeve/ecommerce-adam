@@ -325,6 +325,7 @@ class HeatMapController extends Controller
         }
         return view('heatmap.coordinates');
     }
+
     public function mapCoordinates(){
 
         $coordinates = DB::table('merchant_locations')
