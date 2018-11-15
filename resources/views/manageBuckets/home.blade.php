@@ -31,7 +31,7 @@
         <a class="nav-link " href="/">Upload bucket</a>
       </li>
       <li class="nav-item active">
-        <a class="nav-link " href="/">Show sales Report</a>
+        <a class="nav-link " href="/salesReport">Show sales Report</a>
       </li>
      </ul>
   </div>
