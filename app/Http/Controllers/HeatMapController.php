@@ -327,9 +327,22 @@ class HeatMapController extends Controller
         }
         return view('heatmap.coordinates');
     }else{
-        dd(Input::get('month'));
+        // dd(Input::get('month'));
+        $coordinates = DB::table('merchant_locations')->join('heat_maps','merchant_locations.bucket_name','=','heat_maps.bucket_name')->get();
+  // $traffic = DB::table('heat_maps')->get();
+        foreach($coordinates as $sale){;
+        $date = $sale->throughput_date;
+        $d = date_parse_from_format("Y-m-d", $date);
+        if(($d["month"] == Input::get('month')) && ($d["year"] == Input::get('year'))){
+            echo json_encode($coordinates);
+        }
+        else{
+            Session::flash('error', 'No data available here. Change the month or year');
+                return back();
+        }
     }
     }
+}
  
         
 
