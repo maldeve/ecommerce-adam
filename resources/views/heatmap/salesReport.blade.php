@@ -48,12 +48,6 @@
       </div>
    </body>
 </html>
-        <div class="form-group col-md-6">
-            <input name="year" type="number" class="form-control" placeholder ="E.g 2018">
-        </div>
-        <div class="form-group col-md-6">
-            <button class="btn btn-primary sm" type="submit">Submit</button>
-        </div>
         <strong>{{ Session::get('error') }}</strong>
 </form>
 </body>

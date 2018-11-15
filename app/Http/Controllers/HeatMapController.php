@@ -332,6 +332,13 @@ class HeatMapController extends Controller
         // echo json_encode($traffic);
     }
     public function monthlyHeatMap(){
-        
+        $month = $request->input('month');
+        $year = $request->input('year');
+
+        $filteredCordinates = MerchantLocation::whereYear('created_at', '=', $year)
+              ->whereMonth('created_at', '=', $month)
+              ->get();
+
+              
     }
 }
