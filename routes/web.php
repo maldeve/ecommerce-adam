@@ -19,12 +19,9 @@ Route::get('/', function () {
 Route::get('/upload', 'HeatMapController@uploadIndex');
 Route::post('import', 'HeatMapController@uploadExcel');
 Route::get('heatMap', 'HeatMapController@index');
-Route::get('/heatMap/readData', 'HeatMapController@readData');
+Route::get('/readData', 'HeatMapController@readData');
 Route::get('/addBucket', 'HeatMapController@create');
 Route::post('/createBucket', 'HeatMapController@save');
-
-
-
 
 // Category Routes
 Route::get('/categories', 'CategoryController@index');

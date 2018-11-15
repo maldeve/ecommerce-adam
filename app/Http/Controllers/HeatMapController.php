@@ -123,8 +123,10 @@ class HeatMapController extends Controller
     public function readData()
     {
         //get data
-        $heatmaps = HeatMap::all();
-        return view('mawingu.heatMap', compact('heatmaps'));
+        $heatmaps = DB::table('heat_maps')->select('latitude', 'longitude')->get();
+        // dd($heatmaps);
+        // echo json_encode($heatmaps);
+        return response($heatmaps);
     }
 
     /**
