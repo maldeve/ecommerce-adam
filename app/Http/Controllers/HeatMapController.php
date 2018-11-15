@@ -203,23 +203,23 @@ class HeatMapController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function readData(Request $request)
-    {
-        //get data
-        $sales = DB::table('heat_maps')->get();
-        foreach($sales as $sale){
-            $date = $sale->throughput_date;
-            $d = date_parse_from_format("Y-m-d", $date);
-        }
-        // $heatmaps = DB::table('heat_maps')->select('latitude', 'longitude')->get();
-        $heatmaps = DB::join('heat_maps', 'heat_maps.bucket_name', '=', 'merchant_locations.bucket_name')
-        ->selectRaw('heat_maps.data_throughput', 'heat_maps.throughput_date', 'merchant_locations.latitude', 'merchant_locations.longitude')
-        ->where($d["month"] == $request->month) && ($d["year"] == $request->year)
-        ->get();
-        // dd($heatmaps);
-        // echo json_encode($heatmaps);
-        return response($heatmaps);
-    }
+    // public function readData(Request $request)
+    // {
+    //     //get data
+    //     $sales = DB::table('heat_maps')->get();
+    //     foreach($sales as $sale){
+    //         $date = $sale->throughput_date;
+    //         $d = date_parse_from_format("Y-m-d", $date);
+    //     }
+    //     // $heatmaps = DB::table('heat_maps')->select('latitude', 'longitude')->get();
+    //     $heatmaps = DB::join('heat_maps', 'heat_maps.bucket_name', '=', 'merchant_locations.bucket_name')
+    //     ->selectRaw('heat_maps.data_throughput', 'merchant_locations.latitude', 'merchant_locations.longitude')
+    //     ->where($d["month"] == $request->month) && ($d["year"] == $request->year)
+    //     ->get();
+    //     // dd($heatmaps);
+    //     // echo json_encode($heatmaps);
+    //     return response($heatmaps);
+    // }
 
     /**
      * Show the form for editing the specified resource.
@@ -304,7 +304,7 @@ class HeatMapController extends Controller
             if(($d["month"] == $request->month) && ($d["year"] == $request->year)){
                 array_push($totalSales, $sale->bucket_name);
                 $totalTraffic += $sale->data_throughput;
-// dd($totalTraffic);
+                // dd($totalTraffic);
             }
             else{
                 Session::flash("error","Data for ".$request->year ."/". $request->month." is not available");
@@ -312,7 +312,6 @@ class HeatMapController extends Controller
             }
             }
      
-       
         $allBuckets = sizeof($totalSales);
     //    echo ("Hello Modal");
         return view('heatmap.salesReportMonth',compact('allBuckets','request','totalSales','totalTraffic'));
@@ -331,27 +330,26 @@ class HeatMapController extends Controller
         dd(Input::get('month'));
     }
     }
-    public function mapCoordinates($month, $year){
+ 
+        
+
+    public function mapCoordinates(){
         $coordinates = DB::table('merchant_locations')->join('heat_maps','merchant_locations.bucket_name','=','heat_maps.bucket_name')->get();
         $traffic = DB::table('heat_maps')->get();
 
+        // $coordinates = DB::table('merchant_locations')
+        // ->join('heat_maps','merchant_locations.bucket_name','=','heat_maps.bucket_name')
+        // ->get();
+
+        $traffic = DB::table('heat_maps')->get();
+        
         foreach($coordinates as $coordinate){
             // echo ('new google.map.LatLng('.$coordinate->latitude.',' .$coordinate->longitude.')');
         }
         echo json_encode($coordinates);
         // echo json_encode($traffic);
     }
-    public function monthlyHeatMap(){
-        $month = $request->input('month');
-        $year = $request->input('year');
-
-        $filteredCordinates = MerchantLocation::whereYear('created_at', '=', $year)
-              ->whereMonth('created_at', '=', $month)
-              ->get();
-
-
-    }
-    public function  showForm(){
-        return view('heatmap.searchView');
+    public function heatMapReports(){
+        
     }
 }

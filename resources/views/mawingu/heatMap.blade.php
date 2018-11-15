@@ -125,12 +125,6 @@
           document.getElementById();
       }
 
-      // $.get(baseUrl, function(data) {
-      //     // console.log(data);
-      //     coordinates = [new google.maps.LatLng(data)];
-        
-      // });
-
       function initMap() {
         map = new google.maps.Map(document.getElementById('map'), {
           zoom: 13,
@@ -176,26 +170,6 @@
         heatmap.set('opacity', heatmap.get('opacity') ? null : 0.2);
       }
 
-      
-      // // Heatmap data: 500 Points
-      // var getPoints = [
-      //     new google.maps.LatLng(0.04314, 37.65125, 26),
-      //     new google.maps.LatLng(0.04739, 37.65567, 35),
-      //     new google.maps.LatLng(0.04801, 37.65549, 5),
-      //   ]
-        // $.get(baseUrl, function(data) {
-        //   // console.log(data);
-        //   let coordinates = [];
-        //   for (let i = 0; i < data.length; i++) {
-        //     coordinates.push('new google.map.LatLng('+data[i].latitude+','+data[i].longitude+')'];
-            
-        //   }
-        //   // $.each(data, function(i, value) {
-        //   //   console.log(value.latitude, value.longitude);
-        //   //   // console.log(coordinates);
-        //   // });
-        // });
-      //}
     </script>
     <script async defer
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBqpe5MxT-z7CHNWtJHCDm0cp9Mpiwuk3s&libraries=visualization&callback=initMap">
