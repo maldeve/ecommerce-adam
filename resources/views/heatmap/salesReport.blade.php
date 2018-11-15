@@ -34,6 +34,7 @@
         <div class="form-group col-md-6">
             <button class="btn btn-primary sm" type="submit">Submit</button>
         </div>
+        <strong>{{ Session::get('error') }}</strong>
 </form>
 </body>
 </html>

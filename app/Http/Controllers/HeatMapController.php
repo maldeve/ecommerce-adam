@@ -302,10 +302,12 @@ class HeatMapController extends Controller
                 // dd($sum);
             }
             else{
-                echo ("Data for ".$request->year ."/". $request->month." is not available");
+                Session::flash("error","Data for ".$request->year ."/". $request->month." is not available");
+                // echo ("Data for ".$request->year ."/". $request->month." is not available");
             }
             // return view('heatmap.salesReportMonth');
         }
+        // dd($traffic);
         $allBuckets = sizeof($totalSales);
     //    echo ("Hello Modal");
         return view('heatmap.salesReportMonth',compact('allBuckets','request','totalSales','traffic'));

@@ -49,7 +49,7 @@
           <a class="nav-link  btn btn-primary btn-sm" href="/" style="display:inline-block;">Upload Throughput</a>
           <a class="nav-link  btn btn-success btn-sm" href="/" style="display:inline-block;">Upload bucket</a>
           <a class="nav-link btn btn-success btn-sm" class="btn btn-success btn-sm" href="/search/Bucket" style="display:inline-block;">Manage Buckets</a>
-          <a class="nav-link btn btn-success btn-sm" class="btn btn-success btn-sm" href="/search/Bucket" style="display:inline-block;">Show Reports</a>
+          <a class="nav-link btn btn-success btn-sm" class="btn btn-success btn-sm" href="/salesReport" style="display:inline-block;">Show Reports</a>
           
         </div>
       </div>
