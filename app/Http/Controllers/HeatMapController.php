@@ -333,6 +333,9 @@ class HeatMapController extends Controller
               ->whereMonth('created_at', '=', $month)
               ->get();
 
-              
+
+    }
+    public function  showForm(){
+        return view('heatmap.searchView');
     }
 }
