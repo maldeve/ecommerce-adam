@@ -321,6 +321,9 @@ class HeatMapController extends Controller
     }
     public function mapCoordinates(){
         $coordinates = DB::table('merchant_locations')->get();
+        foreach($coordinates as $coordinate){
+            // echo ('new google.map.LatLng('.$coordinate->latitude.',' .$coordinate->longitude.')');
+        }
         echo json_encode($coordinates);
     }
 }
