@@ -15,6 +15,7 @@
          margin: 0;
          padding: 0;
          }
+
          #floating-panel {
          position: absolute;
          top: 10px;
@@ -31,7 +32,7 @@
          #floating-panel {
          background-color: #fff;
          border: 1px solid #999;
-         left: 25%;
+         left: 50%;
          padding: 5px;
          position: absolute;
          top: 10px;
@@ -42,21 +43,38 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
     <link href="css/style.css" rel="stylesheet">
    </head>
-   <body onload="getCoordinates()">
-   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+ 
+  <body onload="getCoordinates()">
+
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarNav">
     <ul class="navbar-nav">
-      <li class="nav-item active">
-        <a class="nav-link btn btn-primary " href="/heatMapReport">generate report </a>
-      </li>
-      </ul>
+      <form class="form-inline my-2 my-lg-0 float:right">
+                          <label for="month">Select Month</label>
+                           <select name = "month">
+                           <option value="1">January</option>
+                           <option value="2">February</option>
+                           <option value="3">March</option>
+                           <option value="4">April</option>
+                           <option value="5">May</option>
+                           <option value="6">June</option>
+                           <option value="7">July</option>
+                           <option value="8">August</option>
+                           <option value="9">September</option>
+                           <option value="10">October</option>
+                           <option value="11">November</option>
+                           <option value="12">December</option>
+
+        <input class="form-control mr-sm-2" type="search" placeholder="year" aria-label="Search">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+    
+  </ul>
   </div>
 </nav>
-
-  <body onload="getCoordinates()">
     <div id="floating-panel">
       <button onclick="toggleHeatmap()">Toggle Heatmap</button>
       <button onclick="changeGradient()">Change gradient</button>
