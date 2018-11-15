@@ -206,8 +206,15 @@ class HeatMapController extends Controller
     public function readData()
     {
         //get data
-        $heatmaps = DB::table('heat_maps')->select('latitude', 'longitude')->get();
+        // $heatmaps = DB::table('heat_maps')->select('latitude', 'longitude')->get();
+        $heatmaps = DB::join('heat_maps', 'heat_maps.bucket_name', '=', 'merchant_locations.bucket_name')
+        ->selectRaw('heat_maps.data_throughput', 'merchant_locations.latitude', 'merchant_locations.longitude')
+        ->where()
+        ->get();
         // dd($heatmaps);
+        $date = $sale->throughput_date;
+        $d = date_parse_from_format("Y-m-d", $date);
+        if(($d["month"] == $request->month) && ($d["year"] == $request->year)){}
         // echo json_encode($heatmaps);
         return response($heatmaps);
     }
