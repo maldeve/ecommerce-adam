@@ -319,17 +319,19 @@ class HeatMapController extends Controller
     }
     public function map()
     {
+        if(Input::get('month') ==null){
+        
         $coordinates = DB::table('merchant_locations')->get();
         // dd($coordinates);
         foreach($coordinates as $coordinate){
             // echo ('new.google.map.LatLng('.$coordinate->latitude.',' .$coordinate->longitude.')');
         }
         return view('heatmap.coordinates');
+    }else{
+        dd(Input::get('month'));
     }
-    public function mapCoordinates($month){
-        // $month = Input::get('month');
-        dd($month);
-        // $month = Input::get('month');
+    }
+    public function mapCoordinates($month, $year){
         $coordinates = DB::table('merchant_locations')->join('heat_maps','merchant_locations.bucket_name','=','heat_maps.bucket_name')->get();
         $traffic = DB::table('heat_maps')->get();
 
