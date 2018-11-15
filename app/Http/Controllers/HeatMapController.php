@@ -341,7 +341,7 @@ class HeatMapController extends Controller
         // ->join('heat_maps','merchant_locations.bucket_name','=','heat_maps.bucket_name')
         // ->get();
 
-        $traffic = DB::table('heat_maps')->get();
+        // $traffic = DB::table('heat_maps')->get();
         
         foreach($coordinates as $coordinate){
             // echo ('new google.map.LatLng('.$coordinate->latitude.',' .$coordinate->longitude.')');
