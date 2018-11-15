@@ -16,7 +16,7 @@
                <div class="card">
                   <div class="card-header">Generate Report</div>
                   <div class="card-body">
-                     <form action="/salesReports" method="POST" enctype="multipart/form-data">
+                     <form action="/mapCoordinates" method="POST" enctype="multipart/form-data">
                         {{ csrf_field() }}
                         <div class="form-group col-md-6">
                            <label for="email">Select Month</label>
