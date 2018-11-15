@@ -315,15 +315,18 @@ class HeatMapController extends Controller
         $coordinates = DB::table('merchant_locations')->get();
         // dd($coordinates);
         foreach($coordinates as $coordinate){
-            echo ('new.google.map.LatLng('.$coordinate->latitude.',' .$coordinate->longitude.')');
+            // echo ('new.google.map.LatLng('.$coordinate->latitude.',' .$coordinate->longitude.')');
         }
         return view('heatmap.coordinates');
     }
     public function mapCoordinates(){
-        $coordinates = DB::table('merchant_locations')->get();
+        $coordinates = DB::table('merchant_locations')->join('heat_maps','merchant_locations.bucket_name','=','heat_maps.bucket_name')->get();
+        $traffic = DB::table('heat_maps')->get();
+
         foreach($coordinates as $coordinate){
             // echo ('new google.map.LatLng('.$coordinate->latitude.',' .$coordinate->longitude.')');
         }
         echo json_encode($coordinates);
+        // echo json_encode($traffic);
     }
 }
