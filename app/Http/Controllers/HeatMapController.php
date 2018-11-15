@@ -329,4 +329,7 @@ class HeatMapController extends Controller
         echo json_encode($coordinates);
         // echo json_encode($traffic);
     }
+    public function monthlyHeatMap(){
+        
+    }
 }
