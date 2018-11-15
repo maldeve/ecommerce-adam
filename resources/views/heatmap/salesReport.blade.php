@@ -40,6 +40,7 @@
                         <div class="form-group col-md-6">
                            <button class="btn btn-primary sm" type="submit">Submit</button>
                         </div>
+                        <strong>{{ Session::get('error') }}</strong>
                      </form>
                   </div>
                </div>
@@ -48,7 +49,12 @@
       </div>
    </body>
 </html>
+<<<<<<< HEAD
         <strong>{{ Session::get('error') }}</strong>
 </form>
 </body>
 </html>
+=======
+       
+
+>>>>>>> 8b1f6d98c6cf0e5c7ac8b1a2227ddc73fd3521c7

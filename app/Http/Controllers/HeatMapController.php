@@ -283,34 +283,28 @@ class HeatMapController extends Controller
         return view('heatmap.salesReport');
     }
     public function salesReport(Request $request){
-        // dd($request->year);
+        // dd($request);
         $sales = DB::table('heat_maps')->get();
         $totalSales = array();
-        $totalTraffic = array();
+        $totalTraffic = 0;
         foreach($sales as $sale){
             $date = $sale->throughput_date;
             $d = date_parse_from_format("Y-m-d", $date);
-            // dd($d["year"] == $request->year);
             if(($d["month"] == $request->month) && ($d["year"] == $request->year)){
                 array_push($totalSales, $sale->bucket_name);
-                $traffic = DB::table('heat_maps')->sum('data_throughput');
-                // $result = mysql_query('SELECT SUM(data_throughput) AS data_throughput FROM heat_maps'); 
-                
-                // dd(sizeof($totalSales));
-                // $row = mysql_fetch_assoc($result); 
-                // $sum = $row['data_throughput'];
-                // dd($sum);
+                $totalTraffic += $sale->data_throughput;
+// dd($totalTraffic);
             }
             else{
                 Session::flash("error","Data for ".$request->year ."/". $request->month." is not available");
                 // echo ("Data for ".$request->year ."/". $request->month." is not available");
             }
-            // return view('heatmap.salesReportMonth');
-        }
-        // dd($traffic);
+            }
+     
+       
         $allBuckets = sizeof($totalSales);
     //    echo ("Hello Modal");
-        return view('heatmap.salesReportMonth',compact('allBuckets','request','totalSales','traffic'));
+        return view('heatmap.salesReportMonth',compact('allBuckets','request','totalSales','totalTraffic'));
     }
     public function map()
     {
