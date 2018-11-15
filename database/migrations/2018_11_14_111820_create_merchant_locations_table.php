@@ -25,8 +25,8 @@ class CreateMerchantLocationsTable extends Migration
             $table->string('equipment1')->nullable();
             $table->string('ip_address')->nullable();
             $table->string('bucket_name');
-            $table->float('latitude',12,8);
-            $table->float('longitude',12,8);
+            $table->float('latitude',12,8)->nullable();
+            $table->float('longitude',12,8)->nullable();
             $table->string('bucket_name_ip')->nullable();
             $table->integer('deleted')->default('0');
             $table->date('deleted_on')->nullable();

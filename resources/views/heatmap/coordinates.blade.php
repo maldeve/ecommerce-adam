@@ -270,7 +270,9 @@
          }
           
            function initMap(jsonResponse) {
-             fetch('/mapCoordinates')
+             var month = 5;
+            var url = new URL("http://127.0.0.1:8000/mapCoordinates/month");
+             fetch(url)
              .then(function(response) {
                response.json()
                .then(function(result) {
