@@ -30,6 +30,9 @@
       <li class="nav-item active">
         <a class="nav-link " href="/">Upload bucket</a>
       </li>
+      <li class="nav-item active">
+        <a class="nav-link " href="/">Show sales Report</a>
+      </li>
      </ul>
   </div>
 </nav>
@@ -38,14 +41,15 @@
 <!-- section intro -->
 <section id="intro">
       <div class="intro-content">
-        <h2>Welcome to Mawingu!</h2>
+        <h2> MAWINGU NETWORKS!</h2>
         <h3>Affordable and reliable networks</h3>
         <div>
-          <h3>select an action</h3>
+        <h3><font color="green">select an action</font></h3>
           <a class="nav-link  btn btn-primary btn-sm"  href="/heatMap" style="display:inline-block;">show Heat Map </a>
           <a class="nav-link  btn btn-primary btn-sm" href="/" style="display:inline-block;">Upload Throughput</a>
           <a class="nav-link  btn btn-success btn-sm" href="/" style="display:inline-block;">Upload bucket</a>
           <a class="nav-link btn btn-success btn-sm" class="btn btn-success btn-sm" href="/search/Bucket" style="display:inline-block;">Manage Buckets</a>
+          <a class="nav-link btn btn-success btn-sm" class="btn btn-success btn-sm" href="/search/Bucket" style="display:inline-block;">Show Reports</a>
           
         </div>
       </div>

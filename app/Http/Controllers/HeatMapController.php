@@ -187,7 +187,7 @@ class HeatMapController extends Controller
             return view('manageBuckets.searchBucket')->withDetails($buckets)->withQuery($search);
         }
         else{
-            return view('manageBuckets.searchBucket')->withMessage('no bucket found');  
+            return view('manageBuckets.searchBucket')->withMessage('Your search for' .  $search. 'was not found');  
         }
        
     }
@@ -277,7 +277,7 @@ class HeatMapController extends Controller
         MerchantLocation::where('id', $id) ->update([
             'deleted' => 1, 'deleted_on' => date('Y-m-d H:i:s'), 
         ]);
-        return redirect('/');
+        return redirect('/search/Bucket');
     }
     public function salesIndex(){
         return view('heatmap.salesReport');
