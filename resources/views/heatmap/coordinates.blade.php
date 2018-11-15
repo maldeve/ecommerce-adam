@@ -98,14 +98,14 @@
         .then(function(response) {
           response.json()
           .then(function(result) {
-              console.log(result);
+            //   console.log(result);
             let locations = result.map((val) => {
-                console.log(val.latitude * (10 ** -7));
-              return new google.maps.LatLng(val.latitude, val.longitude);
+                return {location: new google.maps.LatLng(val.latitude,val.longitude),weight:val.data_throughput};
+            //   return new google.maps.LatLng(val.latitude, val.longitude);
             })
 
         map = new google.maps.Map(document.getElementById('map'), {
-          zoom: 2,
+          zoom: 9,
           center: {lat: 0.0181605, lng: 37.074055},
           mapTypeId: 'roadmap'
         });
@@ -117,7 +117,7 @@
             radius: rad,
             opacity: opac
         });
-        // console.log(heatmap.data);
+        console.log(heatmap.data);
         });
         });
 
