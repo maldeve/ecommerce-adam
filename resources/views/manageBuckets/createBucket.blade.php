@@ -29,7 +29,8 @@
             <input name="member_email" type="email" class="form-control">
         </div>
         <div class="form-group col-md-6">
-            <button class="btn btn-primary sm" type="submit">Submit</button>
+        <a href="/heatMap" class="btn btn-warning">Go Back</a>
+         <button class="btn btn-primary sm" type="submit">Submit</button>
         </div>
     </form>
 </body>

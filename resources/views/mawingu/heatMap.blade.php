@@ -49,24 +49,19 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
         <li class="nav-item active">
-            <button class="btn-success btn-sm"><a class="nav-link" href="/upload">upload <span class="sr-only">(current)</span></a></button>
+            <a class="nav-link btn btn-warning"  href="/actionsPage">Manage actions</a>
         </li>
-        <li class="nav-item">
-           <a class="nav-link" href="addBucket">add a bucket</a>
-        </li>
-       
+         
         </ul>
         
     </div>
     </nav>
 
-    <div id="floating-panel">
-      <button onclick="toggleHeatmap()">Toggle Heatmap</button>
-      <button onclick="changeGradient()">Change gradient</button>
-      <button onclick="changeRadius()">Change radius</button>
-      <button onclick="changeOpacity()">Change opacity</button>
-      <button onclick="upload()">Upload Data</button>
-      <button onclick="add()">Add bucket</button>
+    <div id="floating-panel" style=right: 0>
+      <button class="btn btn-sm btn-warning" onclick="toggleHeatmap()">Toggle Heatmap</button>
+      <button  class="btn btn-sm btn-warning" onclick="changeGradient()">Change gradient</button>
+      <button  class="btn btn-sm btn-warning" onclick="changeRadius()">Change radius</button>
+      <button  class="btn btn-sm btn-warning" onclick="changeOpacity()">Change opacity</button>
       <button class="btn btn-info pull-right btn-xs" id="read-data">Read Data</button>
     </div>
     <div id="map"></div>
@@ -181,6 +176,7 @@
         heatmap.set('opacity', heatmap.get('opacity') ? null : 0.2);
       }
 
+      
       // // Heatmap data: 500 Points
       // var getPoints = [
       //     new google.maps.LatLng(0.04314, 37.65125, 26),

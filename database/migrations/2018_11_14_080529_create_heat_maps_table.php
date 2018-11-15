@@ -17,8 +17,7 @@ class CreateHeatMapsTable extends Migration
                 $table->increments('id');
                 $table->string('bucket_name');
                 $table->decimal('data_throughput',11,8);
-                $table->float('latitude',12,8);
-                $table->float('longitude',12,8);
+                $table->date('throughput_date');
                 $table->integer('deleted')->default('0');
                 $table->timestamps();
             });

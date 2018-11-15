@@ -12,16 +12,30 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('manageBuckets.home');
 });
 
 //Mawingu HeatMap
+Route::get('/map', 'HeatMapController@map');
+Route::get('/mapCoordinates', 'HeatMapController@mapCoordinates');
 Route::get('/upload', 'HeatMapController@uploadIndex');
 Route::post('import', 'HeatMapController@uploadExcel');
+Route::get('/uploadBucket', 'HeatMapController@indexBucket');
+Route::post('/uploadBucket', 'HeatMapController@uploadBucket');
 Route::get('heatMap', 'HeatMapController@index');
 Route::get('/readData', 'HeatMapController@readData');
 Route::get('/addBucket', 'HeatMapController@create');
+Route::post('/createBucket', 'HeatMapController@store');
+Route::get('/salesReport', 'HeatMapController@salesIndex');
+Route::post('/salesReports', 'HeatMapController@salesReport');
 Route::post('/createBucket', 'HeatMapController@save');
+Route::get('/search/Bucket', 'HeatMapController@displayForm');
+Route::post('/searchBucket', 'HeatMapController@displaySearch');
+Route::patch('/bucket/delete/{id}', 'HeatMapController@destroy');
+Route::get('/bucket/edit/{id}', 'HeatMapController@edit');
+Route::patch('/bucket/{bucketId}', 'HeatMapController@update'); 
+Route::get('/actionsPage', 'HeatMapController@actions');
+// Route::post('/createBucket', 'HeatMapController@store');
 
 // Category Routes
 Route::get('/categories', 'CategoryController@index');

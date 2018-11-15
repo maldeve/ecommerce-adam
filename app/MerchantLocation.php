@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class HeatMap extends Model
+class MerchantLocation extends Model
 {
     //
     protected $guarded = [];
