@@ -33,7 +33,7 @@
       <div class="modal-body">
       <h5 class="modal-title" id="exampleModalLabel">Total buckets = {{$allBuckets}} </h5>
       <br/>
-      <h5 class="modal-title" id="exampleModalLabel">Total Throughput = {{$traffic}} </h5>
+      <h5 class="modal-title" id="exampleModalLabel">Total Throughput = {{$totalTraffic}} </h5>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
