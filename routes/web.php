@@ -36,7 +36,7 @@ Route::get('/bucket/edit/{id}', 'HeatMapController@edit');
 Route::patch('/bucket/{bucketId}', 'HeatMapController@update'); 
 Route::get('/actionsPage', 'HeatMapController@actions');
 Route::get('/heatMapReport', 'HeatMapController@showForm');
-
+Route::post('/heatMapReports', 'HeatMapController@heatMapReports');
 // Route::post('/createBucket', 'HeatMapController@store');
 
 // Category Routes
