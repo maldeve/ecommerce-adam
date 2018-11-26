@@ -18,21 +18,20 @@
   <div class="collapse navbar-collapse" id="navbarNav">
     <ul class="navbar-nav">
       <li class="nav-item active">
-        <a class="nav-link  " href="/map">show Heat Map </a>
+        <a class="nav-link  " href="/map">Show Heat Map </a>
       </li>
        <li class="nav-item">
            <a class="nav-link " class="btn btn-success btn-sm" href="/search/Bucket">Manage Buckets</a>
-      
         </li>
-        <li class="nav-item active">
-        <a class="nav-link   btn-sm" href="/upload">Upload Throughput</a>
-      </li>
-      <li class="nav-item active">
-        <a class="nav-link " href="/uploadBucket">Upload bucket</a>
-      </li>
-      <li class="nav-item active">
-        <a class="nav-link " href="/salesReport">Show sales Report</a>
-      </li>
+        <li class="nav-item">
+           <a class="nav-link " class="btn btn-success btn-sm" href="/upload">Upload Throughput</a>
+        </li>
+        <li class="nav-item">
+           <a class="nav-link " class="btn btn-success btn-sm" href="/uploadBucket">Upload Bucket</a>
+        </li>
+        <li class="nav-item">
+           <a class="nav-link " class="btn btn-success btn-sm" href="/salesReport">Show Sales Report</a>
+        </li>
      </ul>
   </div>
 </nav>
@@ -41,13 +40,13 @@
 <!-- section intro -->
 <section id="intro">
       <div class="intro-content">
-        <h2> MAWINGU NETWORKS!</h2>
-        <h3>Affordable and reliable networks</h3>
+        <h2> MAWINGU NETWORKS</h2>
+        <h3>Affordable and Reliable Internet</h3>
         <div>
-        <h3><font color="green">select an action</font></h3>
-          <a class="nav-link  btn btn-primary btn-sm"  href="/map" style="display:inline-block;">show Heat Map </a>
+        <h3><font color="green">Select an action</font></h3>
+          <a class="nav-link  btn btn-primary btn-sm"  href="/map" style="display:inline-block;">Show Heat Map </a>
           <a class="nav-link  btn btn-primary btn-sm" href="/upload" style="display:inline-block;">Upload Throughput</a>
-          <a class="nav-link  btn btn-success btn-sm" href="/uploadBucket" style="display:inline-block;">Upload bucket</a>
+          <a class="nav-link  btn btn-success btn-sm" href="/uploadBucket" style="display:inline-block;">Upload Bucket</a>
           <a class="nav-link btn btn-success btn-sm" class="btn btn-success btn-sm" href="/search/Bucket" style="display:inline-block;">Manage Buckets</a>
           <a class="nav-link btn btn-success btn-sm" class="btn btn-success btn-sm" href="/salesReport" style="display:inline-block;">Show Reports</a>
           
