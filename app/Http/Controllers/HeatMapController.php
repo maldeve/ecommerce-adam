@@ -327,42 +327,72 @@ class HeatMapController extends Controller
         }
         return view('heatmap.coordinates');
     }else{
-        // dd(Input::get('month'));
         $coordinates = DB::table('merchant_locations')->join('heat_maps','merchant_locations.bucket_name','=','heat_maps.bucket_name')->get();
-  // $traffic = DB::table('heat_maps')->get();
-        foreach($coordinates as $sale){;
-        $date = $sale->throughput_date;
-        $d = date_parse_from_format("Y-m-d", $date);
-        if(($d["month"] == Input::get('month')) && ($d["year"] == Input::get('year'))){
-            echo json_encode($coordinates);
+        // $traffic = DB::table('heat_maps')->get();
+        // dd($coordinates);
+        $response = [];
+        foreach($coordinates as $sale){
+          $date = $sale->throughput_date;
+          $d = date_parse_from_format("Y-m-d", $date);
+        //   dd($d["month"]);
+         if(($d["month"] == Input::get('month')) && ($d["year"] == Input::get('year'))){
+            $coordinate = DB::table('merchant_locations')->join('heat_maps','merchant_locations.bucket_name','=','heat_maps.bucket_name')->where('throughput_date',$date)->get();
+                // echo json_encode($coordinate);
+                $response['matched'] = $coordinate;
+                // dd($response);
+            }
+            else{
+                // Session::flash('error', 'No data available here. Change the month or year');
+                $response['unmatched'] = Session::flash('error', 'No data available here. Change the month or year');
+                // dd('No data available here. Change the month or year');
+                    // return back();
+            }
+            echo json_encode($response);
         }
-        else{
-            Session::flash('error', 'No data available here. Change the month or year');
-                return back();
-        }
-    }
     }
 }
  
         
 
-    public function mapCoordinates(){
+    public function mapCoordinates($month, $year){
+        // dd($month);
+        // dd(Input::get('month'));
         $coordinates = DB::table('merchant_locations')->join('heat_maps','merchant_locations.bucket_name','=','heat_maps.bucket_name')->get();
-        $traffic = DB::table('heat_maps')->get();
-
-        // $coordinates = DB::table('merchant_locations')
-        // ->join('heat_maps','merchant_locations.bucket_name','=','heat_maps.bucket_name')
-        // ->get();
-
         // $traffic = DB::table('heat_maps')->get();
-        
-        foreach($coordinates as $coordinate){
-            // echo ('new google.map.LatLng('.$coordinate->latitude.',' .$coordinate->longitude.')');
-        }
-        echo json_encode($coordinates);
-        // echo json_encode($traffic);
+        // dd($coordinates);
+        $response = [];
+            foreach($coordinates as $sale){
+              $date = $sale->throughput_date;
+              $d = date_parse_from_format("Y-m-d", $date);
+              if(($d["month"] == $month) && ($d["year"] == $year)){
+                $coordinate = DB::table('merchant_locations')->join('heat_maps','merchant_locations.bucket_name','=','heat_maps.bucket_name')->where('throughput_date',$date)->get();
+                    // echo json_encode($coordinate);
+                    $response['matched'] = $coordinate;
+                    // dd($response);
+                }
+                else{
+                    // Session::flash('error', 'No data available here. Change the month or year');
+                    $response['unmatched'] = Session::flash('error', 'No data available here. Change the month or year');
+                    // dd('No data available here. Change the month or year');
+                        // return back();
+                }
+                echo json_encode($response);
+            }
+            // if($response['matched']){
+            //     // echo json_encode($response);
+            // echo json_encode($coordinates);
+            // }
+            // else{
+            //     echo json_encode($response);
+            // }
+            // echo json_encode($response);
+            // echo json_encode($coordinates);
     }
+    
     public function heatMapReports(){
         
+    }
+    public function filterheatMap(){
+        return view('heatmap.searchHeatMap');
     }
 }

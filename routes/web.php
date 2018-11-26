@@ -15,9 +15,12 @@ Route::get('/', function () {
     return view('manageBuckets.home');
 });
 
+// Route::post('/mapCoordinates/{_token}/{month}/{year}', function () {
+//     dd(month,year);
+// });
 //Mawingu HeatMap
 Route::get('/map', 'HeatMapController@map');
-Route::get('/mapCoordinates', 'HeatMapController@mapCoordinates');
+Route::get('/mapCoordinates/{month}/{year}','HeatMapController@mapCoordinates');
 Route::get('/upload', 'HeatMapController@uploadIndex');
 Route::post('import', 'HeatMapController@uploadExcel');
 Route::get('/uploadBucket', 'HeatMapController@indexBucket');
@@ -37,6 +40,7 @@ Route::patch('/bucket/{bucketId}', 'HeatMapController@update');
 Route::get('/actionsPage', 'HeatMapController@actions');
 Route::get('/heatMapReport', 'HeatMapController@showForm');
 Route::post('/heatMapReports', 'HeatMapController@heatMapReports');
+Route::get('/filterheatMap', 'HeatMapController@filterheatMap');
 // Route::post('/createBucket', 'HeatMapController@store');
 
 // Category Routes
