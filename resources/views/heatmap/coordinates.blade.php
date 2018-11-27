@@ -139,17 +139,16 @@
     }
      
       function initMap() {
-        {{csrf_field()}};
-        //  var url = "http://127.0.0.1:8000/map/" + month + "/" + year;
-         var url = "http://127.0.0.1:8000/map/";
+         var url = "http://127.0.0.1:8000/mapCoordinates/" + month + "/" + year;
+        //  var url = "http://127.0.0.1:8000/map/";
         fetch(url)
         
         // fetch('/mapCoordinates')
-        .then(function(response['matched']) {
-          response['matched'].json()
+        .then(function(response) {
+          response.json()
           .then(function(result) {
-            console.log(response['matched']);
-            console.log(result['matched']);
+            console.log(response);
+            console.log(result);
             var locations = result.map((val) => {
               console.log(val.data_throughput * (10 ** 9));
                 return {location: new google.maps.LatLng(val.latitude, val.longitude), key: val.data_throughput * (1000)};
@@ -162,6 +161,54 @@
           center: {lat: 0.0181605, lng: 37.074055},
           mapTypeId: 'roadmap'
         });
+        
+        // var layer = new google.maps.FusionTablesLayer({
+        //   query: {
+        //     select: 'geometry',
+        //     from: '1ertEwm-1bMBhpEwHhtNYT47HQ9k2ki_6sRa-UQ'
+        //   },
+        //   styles: [{
+        //     polygonOptions: {
+        //       fillColor: '#00FF00',
+        //       fillOpacity: 0.3
+        //     }
+        //   }, {
+        //     where: val.data_throughput > '0',
+        //     polygonOptions: {
+        //       fillColor: '#0000FF'
+        //     }
+        //   }, {
+        //     where: '0' < val.data_throughput > '20',
+        //     polygonOptions: {
+        //       fillColor: '#0000FF'
+        //     }
+        //   }, {
+        //     where: '20' < val.data_throughput > '30',
+        //     polygonOptions: {
+        //       fillColor: '#0000FF'
+        //     }
+        //   }, {
+        //     where: '30' < val.data_throughput > '40',
+        //     polygonOptions: {
+        //       fillColor: '#0000FF'
+        //     }
+        //   }, {
+        //     where: '40' < val.data_throughput > '50',
+        //     polygonOptions: {
+        //       fillColor: '#0000FF'
+        //     }
+        //   }, {
+        //     where: '50' < val.data_throughput > '60',
+        //     polygonOptions: {
+        //       fillColor: '#0000FF'
+        //     }
+        //   }, {
+        //     where: val.data_throughput > '60',
+        //     polygonOptions: {
+        //       fillOpacity: 1.0
+        //     }
+        //   }]
+        // });
 
         heatmap = new google.maps.visualization.HeatmapLayer({
           data: locations,
@@ -170,7 +217,7 @@
             radius: rad,
             opacity: opac
         });
-        // console.log(heatmap.data);
+        console.log(heatmap.data);
         });
         });
 

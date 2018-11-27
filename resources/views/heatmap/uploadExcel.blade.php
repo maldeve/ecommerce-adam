@@ -60,7 +60,7 @@
     </div>
 </div>
 @endif
- 
+<a href="{{ URL::to('trafficTemplate/xls') }}" class="btn btn-success btn-lg" type="submit" style="float:right">Download Template</a>
 <form action="/import" method="POST" enctype="multipart/form-data">
     {{ csrf_field() }}
     Choose your xls/csv File : <input type="file" name="file" class="form-control">

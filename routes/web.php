@@ -14,10 +14,21 @@
 Route::get('/', function () {
     return view('manageBuckets.home');
 });
+// Route::get('/mapCoordinates/{response}', function ($response) {
+// dd($response);
+// dd(Session::get('response'));
+// });
+// Route::get('mapCoordinates/{response}', array('response' => 'response', function($response) { 
+//     dd($response);
+//     // return View::make('home.user')->with('target', $nick); 
+// })); 
 
 // Route::post('/mapCoordinates/{_token}/{month}/{year}', function () {
 //     dd(month,year);
 // });
+//Import validation
+Route::get('trafficTemplate/{type}', 'HeatMapController@trafficTemplate');
+Route::get('bucketTemplate/{type}', 'HeatMapController@bucketTemplate');
 //Mawingu HeatMap
 Route::get('/map', 'HeatMapController@map');
 Route::get('/mapCoordinates/{month}/{year}','HeatMapController@mapCoordinates');

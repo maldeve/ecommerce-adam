@@ -60,7 +60,8 @@
     </div>
 </div>
 @endif
- 
+<a href="{{ URL::to('bucketTemplate/xls') }}" class="btn btn-success btn-lg" type="submit" style="float:right">Download Template</a>
+
 <form action="/uploadBucket" method="POST" enctype="multipart/form-data">
     {{ csrf_field() }}
     Choose your xls/csv File : <input type="file" name="file" class="form-control">
